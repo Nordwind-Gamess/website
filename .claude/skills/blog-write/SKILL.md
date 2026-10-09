@@ -96,6 +96,8 @@ draft got rewritten for breaking it.
 - **Date every screenshot and every number.** Builds change; a stale screenshot reads as a lie later.
 - **Show the failed attempt, not only the version that worked.** This is what readers come back for.
 - **Do not announce dates you are not confident in.**
+- **The game repo is private.** Describe what was built in your own words. Never link to it, and
+  ask before quoting code, file paths or commit text verbatim.
 - **Say when something is cut.** Silently dropping a promised feature is noticed and remembered.
 
 ## 5. Assets

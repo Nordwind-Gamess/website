@@ -95,7 +95,8 @@ a fast-forward-only merge of the checked-out branch's upstream. It never creates
 never touches this checkout. If it cannot fast-forward (offline, no upstream, diverged, local
 changes in the way) the repo is read as it is on disk, the scan prints `FAIL sync` and the snapshot
 is marked `complete: false` — a stale clone must not look like a quiet week. `--probe` skips the
-sync.
+sync. The game repo is **private**: commit material may be paraphrased in a post, but nothing from
+it is linked or pasted verbatim without asking.
 
 **New machine:** copy `sources.example.json` → `sources.local.json` and fill in the real sources;
 copy `repos.example.json` → `repos.local.json` and point it at the game repo.
