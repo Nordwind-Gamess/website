@@ -19,7 +19,7 @@ const USAGE = `blog - devlog pipeline
 
   node scripts/blog.mjs scan [--full|--seed|--probe] [--extract N] [--no-refs]
       Reference blogs, our own git activity and our own post inventory into one snapshot
-      (content/ideas/scan.json). Exit 1 if a source came in under its expected_min.
+      (../website-blog-context/scan.json). Exit 1 if a source came in under its expected_min.
         --full      baseline: refetch everything, ignore stored validators, skip extraction
         --seed      like --full, but records every URL as seen so the next delta is quiet
         --probe     reachability only, writes nothing
@@ -152,7 +152,9 @@ async function scan(argv) {
   if (args.has('probe')) {
     const sources = readIdeas('sources.local.json')?.sources
     if (!sources) {
-      console.error('content/ideas/sources.local.json is missing - copy sources.example.json to it')
+      console.error(
+        '../website-blog-context/sources.local.json is missing - copy content/ideas/sources.example.json there',
+      )
       return 1
     }
     banner('probe: endpoint reachability per user-agent profile')
@@ -189,7 +191,7 @@ async function scan(argv) {
 
   banner(`sources (${mode})`)
   if (sourcesMissing) {
-    console.log('  none - content/ideas/sources.local.json is missing')
+    console.log('  none - ../website-blog-context/sources.local.json is missing')
   } else if (!snapshot.sources.length) {
     console.log('  none scanned')
   }
@@ -250,7 +252,7 @@ async function scan(argv) {
   if (!act.game_repo_configured) {
     console.log(
       '\n  repos.local.json is not set up, so this is website-repo activity only.\n' +
-        '  Copy content/ideas/repos.example.json and point it at the game repo.',
+        '  Copy content/ideas/repos.example.json to ../website-blog-context/repos.local.json.',
     )
   }
   for (const p of act.unreachable_paths)
@@ -265,14 +267,14 @@ async function scan(argv) {
   }
 
   banner('summary')
-  console.log(`  wrote content/ideas/scan.json and content/ideas/state.json`)
+  console.log(`  wrote scan.json and state.json in ../website-blog-context/`)
   console.log(`  finished in ${((Date.now() - started) / 1000).toFixed(1)}s`)
   if (sourcesMissing) {
     console.error(
-      '\nINCOMPLETE: content/ideas/sources.local.json does not exist, so no reference blog was\n' +
-        'looked at. That is not "nothing new" - it is a scan that could not look. Copy\n' +
-        'content/ideas/sources.example.json to sources.local.json and fill in the real sources,\n' +
-        'or pass --no-refs if you only wanted our own activity.',
+      '\nINCOMPLETE: ../website-blog-context/sources.local.json does not exist, so no reference\n' +
+        'blog was looked at. That is not "nothing new" - it is a scan that could not look. Copy\n' +
+        'content/ideas/sources.example.json to it and fill in the real\n' +
+        'sources, or pass --no-refs if you only wanted our own activity.',
     )
     return 1
   }
@@ -329,7 +331,9 @@ async function backlogContext() {
   ])
   const backlog = lib.load()
   if (!backlog) {
-    console.error('content/ideas/backlog.json does not exist yet - run `blog add` to create it')
+    console.error(
+      '../website-blog-context/backlog.json does not exist yet - run `blog add` to create it',
+    )
     return null
   }
   return { lib, backlog, corpus: readCorpus() }
@@ -624,8 +628,8 @@ async function check(argv) {
     banner('backlog')
     const backlog = backlogLib.load()
     if (!backlog) {
-      // content/ideas/backlog.json is gitignored, so it does not exist on a fresh CI checkout.
-      console.log('SKIP  content/ideas/backlog.json does not exist on this checkout')
+      // the private ideas repo is not cloned in CI, so the backlog does not exist there.
+      console.log('SKIP  ../website-blog-context/backlog.json does not exist on this checkout')
       results.push({ name: 'backlog', errors: [], warnings: [], skipped: true })
     } else {
       const { errors, warnings } = backlogLib.validate(backlog, corpus)
