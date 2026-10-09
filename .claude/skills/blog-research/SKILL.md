@@ -18,7 +18,7 @@ npm run blog:scan
 ```
 
 One command: reference blogs, our own git activity, our own post inventory, and the shape of new
-reference posts — all into `content/ideas/scan.json`.
+reference posts — all into `../website-blog-context/scan.json`.
 
 Read the source table it prints:
 
@@ -31,9 +31,9 @@ Read the source table it prints:
   from that source.
 - `cached` means the source answered 304 and was not refetched. Its count comes from the last real
   fetch and is still checked against `expected_min`, so a cached source can still FAIL.
-- If it says `repos.local.json is not set up`, this is website-repo activity only — **say that in
+- If it says `repos.json is not set up`, this is website-repo activity only — **say that in
   your report** rather than treating it as the whole picture. The game repo is the one that matters.
-- The scan fetches and fast-forwards every repo in `repos.local.json` first. A `FAIL sync` line
+- The scan fetches and fast-forwards every repo in `repos.json` first. A `FAIL sync` line
   means that repo was read as it is on disk and may be behind — say so at the top of your report.
 
 An empty delta from the reference blogs is normal; several publish rarely. Thin _own_ activity is

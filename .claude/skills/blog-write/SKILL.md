@@ -29,7 +29,7 @@ A `type: "refresh"` idea edits an existing pair of files: update `date`, keep th
 
 ## 2. Research before structuring
 
-Read `content/ideas/scan.json` — it holds our git activity (`activity`), our own posts (`posts`) and
+Read `../website-blog-context/scan.json` — it holds our git activity (`activity`), our own posts (`posts`) and
 the shape of recent reference-blog posts (`extracted`) in one snapshot. Plus the idea's own
 `evidence` field: what you are actually going to show — a screenshot, a before/after number, the
 real diff.
