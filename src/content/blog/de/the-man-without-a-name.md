@@ -66,7 +66,7 @@ Die Hörner sind die andere Entscheidung, zu der ich stehen sollte. Wikinger tru
 
 Der Rest der Zeichnung besteht aus Fell, gewickeltem Leder und drei Spiralscheiben, und das ist die normale Ausrüstung des Außenpostens statt irgendetwas Heldenhaftem. Sein Gesicht ist in voller Detailtiefe drin, und du wirst es aus dieser Kameradistanz praktisch nie sehen. Diese Details sind für mich, als Referenz für das Modell, das ich noch bauen muss.
 
-Damit klar ist, wo das Ganze wirklich steht: Davon ist noch nichts modelliert, genau wie bei den vier Gegnern aus dem Bestiarium. Es ist eine Zeichnung, und die 3D-Arbeit kommt nach der [Demo am 16. Oktober](/holdstrong/).
+Damit klar ist, wo das Ganze wirklich steht: Davon ist noch nichts modelliert, genau wie bei den vier Gegnern aus dem Bestiarium. Es ist eine Zeichnung, und das 3D-Modell ist der nächste Schritt.
 
 ## Die eine Sache, die ich noch nicht entschieden habe
 

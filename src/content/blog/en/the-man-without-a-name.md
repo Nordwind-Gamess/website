@@ -66,7 +66,7 @@ The horns are the other decision worth admitting to. Vikings did not wear horned
 
 The rest of the drawing is fur, wrapped leather and three spiral discs, which is the outpost's own issued gear rather than anything heroic. His face is in there in full detail, and you will essentially never see it from that camera distance. That detail is for me, as a reference for the model I still have to build.
 
-To be clear about where this actually stands: nothing of this is modelled yet, exactly as with the four enemies in the bestiary post. It is a drawing, and the 3D work comes after the [demo on 16 October](/holdstrong/).
+To be clear about where this actually stands: nothing of this is modelled yet, exactly as with the four enemies in the bestiary post. It is a drawing, and the 3D model is the next step.
 
 ## The one thing I have not decided
 
