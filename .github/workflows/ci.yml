@@ -33,9 +33,9 @@ jobs:
         # gate too. --check parses every module without running it, which costs ~50ms and makes
         # that failure obvious instead of confusing.
         #
-        # content/ideas/backlog.json is gitignored (privacy — see .gitignore), so it does not
-        # exist on this checkout. The backlog gate skips itself with a note instead of failing;
-        # conventions and images still run against every checked-in post.
+        # The backlog lives in a private repo cloned next to this repo (see docs/blog.md), so it
+        # does not exist on this checkout. The backlog gate skips itself with a note instead of
+        # failing; conventions and images still run against every checked-in post.
         run: |
           node --check scripts/blog.mjs
           for f in scripts/lib/*.mjs; do node --check "$f"; done

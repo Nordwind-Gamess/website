@@ -1,6 +1,6 @@
 ---
 name: blog-write
-description: Turn an approved idea from content/ideas/backlog.json into a publishable bilingual devlog post (EN + DE) with assets and verification. Use when asked to write the next devlog post, draft a post from the backlog, or work on a specific idea id.
+description: Turn an approved idea from the backlog (../website-blog-context/backlog.json) into a publishable bilingual devlog post (EN + DE) with assets and verification. Use when asked to write the next devlog post, draft a post from the backlog, or work on a specific idea id.
 ---
 
 # Writing a devlog post from the backlog

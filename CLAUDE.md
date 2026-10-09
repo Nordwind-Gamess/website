@@ -61,10 +61,13 @@ Schema-Felder: [docs/seo.md](./docs/seo.md) — bei Änderungen mitpflegen.
 
 Die Ideen-Pipeline für den Devlog liegt in `scripts/blog.mjs` + `scripts/lib/` +
 `.claude/skills/blog-research/` + `.claude/skills/blog-write/`, dokumentiert in
-[docs/blog.md](./docs/blog.md). Drei Commands: `npm run blog` (Status), `npm run blog:scan`,
-`npm run blog:check`. Wichtig: `content/ideas/sources.local.json` (die echten
-Referenz-Blog-URLs) und alle daraus abgeleiteten State-Files sind absichtlich gitignored —
-dieses Repo ist öffentlich. Vor dem Schreiben eines Posts `npm run blog:check` laufen lassen.
+[docs/blog.md](./docs/blog.md). Vier Commands: `npm run blog` (Status), `npm run blog:scan`,
+`npm run blog:check`, `npm run blog:sync`. Wichtig: Backlog, die echten Referenz-Blog-URLs und
+alle daraus abgeleiteten State-Files liegen im privaten Repo `NordWindGames/website-blog-context`,
+geklont als Nachbarordner `../website-blog-context/` — nie in diesem öffentlichen Repo, auch nicht
+gitignored. `add`, `set`,
+`note` und `scan` pullen vorher und pushen danach; schlägt der Pull fehl, schreiben sie nichts.
+Vor dem Schreiben eines Posts `npm run blog:check` laufen lassen.
 
 ## Styling und Responsive
 

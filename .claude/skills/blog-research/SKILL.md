@@ -1,6 +1,6 @@
 ---
 name: blog-research
-description: Periodic devlog idea generation. Reads our own git history plus the reference blogs, generates scored post ideas and practice observations, and appends them to content/ideas/backlog.json. Use when asked to find new devlog ideas, run the devlog research, or refresh the backlog.
+description: Periodic devlog idea generation. Reads our own git history plus the reference blogs, generates scored post ideas and practice observations, and appends them to the backlog in the private ideas repo (../website-blog-context/backlog.json). Use when asked to find new devlog ideas, run the devlog research, or refresh the backlog.
 ---
 
 # Devlog idea generation
@@ -23,8 +23,8 @@ reference posts — all into `content/ideas/scan.json`.
 Read the source table it prints:
 
 - **A `FAIL` means a reference blog changed its structure, not that the threshold is wrong.** Fix
-  the endpoint or `pathFilter` in `content/ideas/sources.local.json` (gitignored — the real URLs
-  live only there). **Never lower `expected_min` to clear it.** To retire a source deliberately,
+  the endpoint or `pathFilter` in `../website-blog-context/sources.local.json` (private repo —
+  the real URLs live only there). **Never lower `expected_min` to clear it.** To retire a source deliberately,
   set `"enabled": false`.
 - **A non-zero exit means a source came in short.** The snapshot is still written but carries
   `complete: false`. Say so at the top of your report and be more cautious about pattern claims
@@ -61,7 +61,7 @@ Five types:
 - **`refresh`** — an existing post overtaken by events.
 
 Also read: `scan.json`'s `posts` (avoid repeating a covered topic), the existing backlog
-(`node scripts/blog.mjs idea`) and `content/ideas/rejected.md`.
+(`node scripts/blog.mjs idea`) and `../website-blog-context/rejected.md`.
 
 **Dedup must be semantic.** Compare by meaning against everything ever seen, not only approved
 ideas — the script only catches an identical title, and only as a warning.
