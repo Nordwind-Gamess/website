@@ -34,7 +34,7 @@ const REQUEST_TIMEOUT_MS = 15_000;
 
 // Set after deploying scripts/google-apps-script/playtest-signup.gs as a web app.
 const PLAYTEST_SIGNUP_ENDPOINT =
-	'https://script.google.com/macros/s/AKfycbw8hzeMnWs00hsAvczc_6sXYWIMyNmFNoN86Fl3cgRLPtYfy7J9iat5HlCbxwRdXGRK/exec';
+	'https://script.google.com/macros/s/AKfycbzf-7fjsDyaF5xcghMeuhXg8n5urrkmIPmlRhsJfAXPhpVbzJDgvB8MrncMVfEKRNkj/exec';
 
 // Must match SHARED_TOKEN in scripts/google-apps-script/playtest-signup.gs.
 // Not a real secret (it ships in the public JS bundle) — it only filters out
