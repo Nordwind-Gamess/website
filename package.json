@@ -13,6 +13,7 @@
     "blog": "node scripts/blog.mjs",
     "blog:scan": "node scripts/blog.mjs scan",
     "blog:check": "node scripts/blog.mjs check",
+    "blog:sync": "node scripts/blog.mjs sync",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
   },

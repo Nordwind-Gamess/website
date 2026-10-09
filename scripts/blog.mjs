@@ -48,7 +48,12 @@ const USAGE = `blog - devlog pipeline
   node scripts/blog.mjs check [--strict] [--only lint|assets|backlog]
       Run the quality gates. Exit 1 on any error, or on any warning with --strict.
 
-Also available as: npm run blog:scan, npm run blog:check
+  node scripts/blog.mjs sync
+      Pull and push the private ideas repo (../website-blog-context/). add, set, note and scan
+      already do this on every run and refuse to write when the pull fails; sync is for a hand
+      edit of rejected.md, or a push that an earlier command could not finish.
+
+Also available as: npm run blog:scan, npm run blog:check, npm run blog:sync
 `
 
 const banner = (title) => {
@@ -477,6 +482,7 @@ async function add(argv) {
   console.log(
     `\n${added.length} item(s) added at status "new". Review with: node scripts/blog.mjs idea`,
   )
+  commitMessage = `backlog: add ${added.map((i) => i.id).join(' ')}`
   return 0
 }
 
@@ -529,6 +535,7 @@ async function set(argv) {
 
   lib.save(backlog)
   for (const item of changed) console.log(`${item.id} -> ${item.status}`)
+  commitMessage = `backlog: ${status} ${changed.map((i) => i.id).join(' ')}`
   return 0
 }
 
@@ -553,6 +560,7 @@ async function note(argv) {
   item.followup_log = [...(item.followup_log ?? []), { at: today(), note: text }]
   lib.save(backlog)
   console.log(`${item.id}: noted (${item.followup_log.length} entr(y/ies), status unchanged)`)
+  commitMessage = `backlog: note on ${item.id}`
   return 0
 }
 
@@ -672,7 +680,24 @@ function report(errors, warnings) {
   for (const e of errors) console.error(`ERROR ${e}`)
 }
 
-const COMMANDS = { status, scan, extract, idea, add, set, note, check }
+/** Pull and push only - for a hand edit of rejected.md, or a push an earlier command could not do. */
+async function sync(argv) {
+  if (argv.length) {
+    console.error('sync takes no arguments')
+    return 2
+  }
+  return 0
+}
+
+const COMMANDS = { status, scan, extract, idea, add, set, note, check, sync }
+
+/**
+ * Commands that write to the private ideas repo pull before and push after, so no machine ever
+ * writes on top of a stale backlog. Each sets `commitMessage` once it knows what it wrote.
+ * `scan --probe` writes nothing and is left out.
+ */
+const SYNCED = ['add', 'set', 'note', 'scan', 'sync']
+let commitMessage = null
 
 const [command, ...argv] = process.argv.slice(2)
 
@@ -688,6 +713,15 @@ if (!COMMANDS[command]) {
 }
 
 try {
+  if (SYNCED.includes(command) && !(command === 'scan' && argv.includes('--probe'))) {
+    const { withIdeasSync } = await import('./lib/ideas-sync.mjs')
+    process.exit(
+      await withIdeasSync(
+        () => commitMessage ?? `${command}: ${new Date().toISOString().slice(0, 10)}`,
+        () => COMMANDS[command](argv),
+      ),
+    )
+  }
   process.exit(await COMMANDS[command](argv))
 } catch (err) {
   console.error(`blog ${command}: ${err.message}`)
