@@ -92,7 +92,7 @@ single `git add -f` would publish them. `.gitignore` still allowlists only the t
 
 ### The private ideas repo
 
-The private repo `NordWindGames/website-blog-context` is cloned **next to** this checkout, to
+The private repo `Nordwind-Gamess/website-blog-context` is cloned **next to** this checkout, to
 `../website-blog-context/`. Clone both side by side on every machine and nothing needs configuring;
 anywhere else, set `DEVLOG_IDEAS_DIR` to the clone's path. `scripts/lib/ctx.mjs` resolves the
 location, `scripts/lib/ideas-sync.mjs` does the syncing. Every file in it is synced, so a scan on
@@ -122,7 +122,7 @@ sync. The game repo is **private**: commit material may be paraphrased in a post
 it is linked or pasted verbatim without asking.
 
 **New machine:** clone the game repo and, from this checkout,
-`git clone https://github.com/NordWindGames/website-blog-context.git ../website-blog-context` — all
+`git clone https://github.com/Nordwind-Gamess/website-blog-context.git ../website-blog-context` — all
 three side by side. Nothing else to set up.
 
 ## Invariants — do not relitigate without a new reason

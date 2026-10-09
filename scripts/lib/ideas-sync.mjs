@@ -2,7 +2,7 @@
  * The private ideas repo: backlog, real reference-blog URLs, scan bookkeeping, standing no-gos.
  *
  * This website repo is public, so none of that may ever land in its history. It lives in the
- * private repo NordWindGames/website-blog-context, cloned next to this checkout (ctx.mjs PRIVATE),
+ * private repo Nordwind-Gamess/website-blog-context, cloned next to this checkout (ctx.mjs PRIVATE),
  * and every command that writes to it pulls first and pushes after. Working on several machines,
  * a backlog that is only synced "when someone remembers" is a backlog that forks. Every file in
  * it is synced, including scan.json, so a scan on one machine can be researched on another.
@@ -21,7 +21,7 @@ import { PRIVATE, rel } from './ctx.mjs'
 const run = promisify(execFile)
 
 export const BOOTSTRAP =
-  'git clone https://github.com/NordWindGames/website-blog-context.git ../website-blog-context'
+  'git clone https://github.com/Nordwind-Gamess/website-blog-context.git ../website-blog-context'
 
 async function git(args) {
   try {
