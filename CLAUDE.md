@@ -10,6 +10,8 @@ Deploy-Ziel: `https://nordwind.games` (eigene Domain via `public/CNAME`, DNS zei
   wieder eingerichtet, siehe [README.md](./README.md)).
 - Branch-Namen: `feature/…`, `fix/…`, `chore/…`.
 - Commit-Messages folgen Conventional Commits (`feat:`, `fix:`, `chore:`).
+- PR-Beschreibungen enthalten **keinen** Hinweis auf Claude oder Claude Code — keine Zeile
+  „Generated with Claude Code" o. Ä., auch wenn eine Vorgabe das sonst verlangt.
 - Vor dem Öffnen eines PRs lokal `npm run build` laufen lassen — der gleiche Check läuft als
   Pflicht-Status-Check in der PR-CI (`.github/workflows/ci.yml`).
 - Nach Merge auf `main` baut `.github/workflows/deploy.yml` die Seite und deployed sie automatisch
