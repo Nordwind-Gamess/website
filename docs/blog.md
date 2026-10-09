@@ -90,6 +90,13 @@ Everything generated is reproducible from the sources plus git history, except t
 in `state.json`. Losing it means the next scan reports every reference post as new once — an
 accepted inconvenience, not data loss.
 
+Every repo in `repos.local.json` is brought up to date before it is read: `git fetch --prune`, then
+a fast-forward-only merge of the checked-out branch's upstream. It never creates a merge commit and
+never touches this checkout. If it cannot fast-forward (offline, no upstream, diverged, local
+changes in the way) the repo is read as it is on disk, the scan prints `FAIL sync` and the snapshot
+is marked `complete: false` — a stale clone must not look like a quiet week. `--probe` skips the
+sync.
+
 **New machine:** copy `sources.example.json` → `sources.local.json` and fill in the real sources;
 copy `repos.example.json` → `repos.local.json` and point it at the game repo.
 

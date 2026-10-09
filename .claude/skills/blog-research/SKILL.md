@@ -33,6 +33,8 @@ Read the source table it prints:
   fetch and is still checked against `expected_min`, so a cached source can still FAIL.
 - If it says `repos.local.json is not set up`, this is website-repo activity only — **say that in
   your report** rather than treating it as the whole picture. The game repo is the one that matters.
+- The scan fetches and fast-forwards every repo in `repos.local.json` first. A `FAIL sync` line
+  means that repo was read as it is on disk and may be behind — say so at the top of your report.
 
 An empty delta from the reference blogs is normal; several publish rarely. Thin _own_ activity is
 the informative signal: development was slow, and a devlog can say so honestly.
