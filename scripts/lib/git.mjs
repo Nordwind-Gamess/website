@@ -149,8 +149,10 @@ export async function readRepo(repo, since) {
     'refs/tags',
   ]
   if (since) {
-    logArgs.push(`--since=${since}`)
-    mergeArgs.push(`--since=${since}`)
+    // A bare date means that date at the *current time of day* to git, so the same scan would
+    // lose a different slice of the post's day depending on when it runs. Pin it to midnight.
+    logArgs.push(`--since=${since} 00:00`)
+    mergeArgs.push(`--since=${since} 00:00`)
   }
 
   const [logRaw, mergeRaw, tagRaw] = await Promise.all([
