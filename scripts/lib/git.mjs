@@ -10,9 +10,10 @@
  */
 import { execFile } from 'node:child_process'
 import { existsSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { promisify } from 'node:util'
 
-import { ROOT, readIdeas } from './ctx.mjs'
+import { PRIVATE, ROOT, readIdeas } from './ctx.mjs'
 
 const run = promisify(execFile)
 
@@ -37,21 +38,26 @@ async function git(cwd, args) {
 }
 
 /**
- * Repos to scan: this one, plus anything in repos.local.json (gitignored - it holds machine
- * specific absolute paths). In practice the game repo, not the website, is where devlog-worthy
- * activity happens; without it configured, `configured` is false and the caller must say so
- * rather than presenting website-only activity as the whole picture.
+ * Repos to scan: this one, plus anything in repos.json in the private ideas repo. In practice the
+ * game repo, not the website, is where devlog-worthy activity happens; without it configured,
+ * `configured` is false and the caller must say so rather than presenting website-only activity
+ * as the whole picture.
+ *
+ * repos.json is synced across machines, so a relative path is resolved against the ideas clone:
+ * `../GamePrototype_1` works on every machine that keeps the repos side by side. An absolute path
+ * still works, but only on the machine it was written on.
  */
 export function reposToScan() {
-  const declared = readIdeas('repos.local.json')?.repos ?? []
+  const declared = readIdeas('repos.json')?.repos ?? []
   const repos = [{ id: 'website', label: 'Website', path: ROOT }]
   const missing = []
 
   for (const repo of declared) {
     if (!repo.path) continue
-    if (existsSync(repo.path))
-      repos.push({ id: repo.id, label: repo.label ?? repo.id, path: repo.path, sync: true })
-    else missing.push(repo.path)
+    const path = resolve(PRIVATE, repo.path)
+    if (existsSync(path))
+      repos.push({ id: repo.id, label: repo.label ?? repo.id, path, sync: true })
+    else missing.push(path)
   }
 
   return { repos, configured: declared.length > 0, missing }

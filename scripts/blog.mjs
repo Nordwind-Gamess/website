@@ -256,8 +256,8 @@ async function scan(argv) {
   }
   if (!act.game_repo_configured) {
     console.log(
-      '\n  repos.local.json is not set up, so this is website-repo activity only.\n' +
-        '  Copy content/ideas/repos.example.json to ../website-blog-context/repos.local.json.',
+      '\n  repos.json is not set up, so this is website-repo activity only.\n' +
+        '  Copy content/ideas/repos.example.json to ../website-blog-context/repos.json.',
     )
   }
   for (const p of act.unreachable_paths)

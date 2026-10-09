@@ -4,8 +4,8 @@
  * This website repo is public, so none of that may ever land in its history. It lives in the
  * private repo NordWindGames/website-blog-context, cloned next to this checkout (ctx.mjs PRIVATE),
  * and every command that writes to it pulls first and pushes after. Working on several machines,
- * a backlog that is only synced "when someone remembers" is a backlog that forks. scan.json and
- * repos.local.json are per machine and ignored by that repo's own .gitignore.
+ * a backlog that is only synced "when someone remembers" is a backlog that forks. Every file in
+ * it is synced, including scan.json, so a scan on one machine can be researched on another.
  *
  * The rule is: refuse rather than write on top of a state that might be stale. If the pull fails
  * (offline, diverged) nothing is written. If the push fails, the write is committed locally and
