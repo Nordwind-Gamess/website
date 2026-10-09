@@ -196,7 +196,8 @@ export async function scan({ mode = 'delta', extract = 20, refs = true } = {}) {
   // Local work does not wait on the network any more.
   const localWork = (async () => {
     const corpus = readCorpus()
-    const activity = await readActivity(newestDate(corpus))
+    // --probe writes nothing, and that includes not moving another repo's branch.
+    const activity = await readActivity(newestDate(corpus), { sync: mode !== 'probe' })
     return { corpus, activity }
   })()
 

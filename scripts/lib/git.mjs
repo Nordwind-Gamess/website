@@ -27,6 +27,8 @@ async function git(cwd, args) {
       cwd,
       encoding: 'utf8',
       maxBuffer: 32 * 1024 * 1024,
+      // A fetch against a private remote must fail, not sit waiting for a password prompt.
+      env: { ...process.env, GIT_TERMINAL_PROMPT: '0' },
     })
     return stdout
   } catch {
@@ -48,11 +50,36 @@ export function reposToScan() {
   for (const repo of declared) {
     if (!repo.path) continue
     if (existsSync(repo.path))
-      repos.push({ id: repo.id, label: repo.label ?? repo.id, path: repo.path })
+      repos.push({ id: repo.id, label: repo.label ?? repo.id, path: repo.path, sync: true })
     else missing.push(repo.path)
   }
 
   return { repos, configured: declared.length > 0, missing }
+}
+
+/**
+ * Bring a declared repo up to its upstream before reading it. The game repo is worked on outside
+ * this checkout, so a local clone that was never pulled would make a busy week look like a quiet
+ * one - the same masking the expected_min guard exists to prevent for the reference blogs.
+ *
+ * Fast-forward only: this never creates a merge commit or touches a diverged branch in someone
+ * else's working copy. Anything it cannot do cleanly is reported, and the repo is read as it is.
+ */
+async function syncRepo(path) {
+  if ((await git(path, ['fetch', '--prune', '--quiet'])) === null)
+    return { ok: false, detail: 'git fetch failed (offline, or no access to the remote)' }
+
+  const upstream = (await git(path, ['rev-parse', '--abbrev-ref', '@{u}']))?.trim()
+  if (!upstream) return { ok: false, detail: 'the checked-out branch has no upstream' }
+
+  // The fetch above already has the commits; merging @{u} is `git pull` without a second fetch.
+  if ((await git(path, ['merge', '--ff-only', '--quiet', '@{u}'])) === null)
+    return {
+      ok: false,
+      detail: `cannot fast-forward to ${upstream} (diverged, or local changes in the way)`,
+    }
+
+  return { ok: true, detail: `up to date with ${upstream}` }
 }
 
 const commitType = (subject) =>
@@ -180,13 +207,22 @@ export async function readRepo(repo, since) {
   }
 }
 
-/** All configured repos, scanned concurrently. */
-export async function readActivity(since) {
+/**
+ * All configured repos, scanned concurrently. With `sync`, declared repos are fetched and
+ * fast-forwarded first; this checkout is never touched, it is the one being worked in.
+ */
+export async function readActivity(since, { sync = true } = {}) {
   const { repos, configured, missing } = reposToScan()
-  const scanned = await Promise.all(repos.map((repo) => readRepo(repo, since)))
+  const scanned = await Promise.all(
+    repos.map(async (repo) => {
+      const synced = sync && repo.sync ? await syncRepo(repo.path) : null
+      return { ...(await readRepo(repo, since)), sync: synced }
+    }),
+  )
 
   return {
-    ok: scanned.every((r) => r.ok),
+    // A repo that could not be brought up to date is read anyway, but the scan is not complete.
+    ok: scanned.every((r) => r.ok && r.sync?.ok !== false),
     since: since ?? null,
     cold_start: !since,
     game_repo_configured: configured,

@@ -233,6 +233,12 @@ async function scan(argv) {
         (repo.span ? `  ${repo.span.from} … ${repo.span.to}` : '') +
         (repo.tags.length ? `  tags: ${repo.tags.map((t) => t.name).join(', ')}` : ''),
     )
+    if (repo.sync) {
+      console.log(
+        `      ${repo.sync.ok ? 'sync' : 'FAIL sync'}  ${repo.sync.detail}` +
+          (repo.sync.ok ? '' : ' - read as it is on disk, scan marked incomplete'),
+      )
+    }
     for (const c of repo.clusters.slice(0, 6)) {
       const withBody = c.commits.filter((x) => x.comment).length
       console.log(
