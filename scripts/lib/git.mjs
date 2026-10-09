@@ -10,9 +10,10 @@
  */
 import { execFile } from 'node:child_process'
 import { existsSync } from 'node:fs'
+import { resolve } from 'node:path'
 import { promisify } from 'node:util'
 
-import { ROOT, readIdeas } from './ctx.mjs'
+import { PRIVATE, ROOT, readIdeas } from './ctx.mjs'
 
 const run = promisify(execFile)
 
@@ -27,6 +28,8 @@ async function git(cwd, args) {
       cwd,
       encoding: 'utf8',
       maxBuffer: 32 * 1024 * 1024,
+      // A fetch against a private remote must fail, not sit waiting for a password prompt.
+      env: { ...process.env, GIT_TERMINAL_PROMPT: '0' },
     })
     return stdout
   } catch {
@@ -35,24 +38,54 @@ async function git(cwd, args) {
 }
 
 /**
- * Repos to scan: this one, plus anything in repos.local.json (gitignored - it holds machine
- * specific absolute paths). In practice the game repo, not the website, is where devlog-worthy
- * activity happens; without it configured, `configured` is false and the caller must say so
- * rather than presenting website-only activity as the whole picture.
+ * Repos to scan: this one, plus anything in repos.json in the private ideas repo. In practice the
+ * game repo, not the website, is where devlog-worthy activity happens; without it configured,
+ * `configured` is false and the caller must say so rather than presenting website-only activity
+ * as the whole picture.
+ *
+ * repos.json is synced across machines, so a relative path is resolved against the ideas clone:
+ * `../GamePrototype_1` works on every machine that keeps the repos side by side. An absolute path
+ * still works, but only on the machine it was written on.
  */
 export function reposToScan() {
-  const declared = readIdeas('repos.local.json')?.repos ?? []
+  const declared = readIdeas('repos.json')?.repos ?? []
   const repos = [{ id: 'website', label: 'Website', path: ROOT }]
   const missing = []
 
   for (const repo of declared) {
     if (!repo.path) continue
-    if (existsSync(repo.path))
-      repos.push({ id: repo.id, label: repo.label ?? repo.id, path: repo.path })
-    else missing.push(repo.path)
+    const path = resolve(PRIVATE, repo.path)
+    if (existsSync(path))
+      repos.push({ id: repo.id, label: repo.label ?? repo.id, path, sync: true })
+    else missing.push(path)
   }
 
   return { repos, configured: declared.length > 0, missing }
+}
+
+/**
+ * Bring a declared repo up to its upstream before reading it. The game repo is worked on outside
+ * this checkout, so a local clone that was never pulled would make a busy week look like a quiet
+ * one - the same masking the expected_min guard exists to prevent for the reference blogs.
+ *
+ * Fast-forward only: this never creates a merge commit or touches a diverged branch in someone
+ * else's working copy. Anything it cannot do cleanly is reported, and the repo is read as it is.
+ */
+async function syncRepo(path) {
+  if ((await git(path, ['fetch', '--prune', '--quiet'])) === null)
+    return { ok: false, detail: 'git fetch failed (offline, or no access to the remote)' }
+
+  const upstream = (await git(path, ['rev-parse', '--abbrev-ref', '@{u}']))?.trim()
+  if (!upstream) return { ok: false, detail: 'the checked-out branch has no upstream' }
+
+  // The fetch above already has the commits; merging @{u} is `git pull` without a second fetch.
+  if ((await git(path, ['merge', '--ff-only', '--quiet', '@{u}'])) === null)
+    return {
+      ok: false,
+      detail: `cannot fast-forward to ${upstream} (diverged, or local changes in the way)`,
+    }
+
+  return { ok: true, detail: `up to date with ${upstream}` }
 }
 
 const commitType = (subject) =>
@@ -97,6 +130,9 @@ function parseMerges(raw) {
 /** One repo's activity since `since` (ISO date, or null for everything). */
 export async function readRepo(repo, since) {
   const logArgs = [
+    // Otherwise git wraps any path with a non-ASCII character in quotes and escapes it.
+    '-c',
+    'core.quotePath=false',
     'log',
     '--no-merges',
     `--pretty=format:${RECORD_SEP}${['%H', '%ad', '%s', '%b'].join(FIELD_SEP)}${FIELD_SEP}`,
@@ -113,8 +149,10 @@ export async function readRepo(repo, since) {
     'refs/tags',
   ]
   if (since) {
-    logArgs.push(`--since=${since}`)
-    mergeArgs.push(`--since=${since}`)
+    // A bare date means that date at the *current time of day* to git, so the same scan would
+    // lose a different slice of the post's day depending on when it runs. Pin it to midnight.
+    logArgs.push(`--since=${since} 00:00`)
+    mergeArgs.push(`--since=${since} 00:00`)
   }
 
   const [logRaw, mergeRaw, tagRaw] = await Promise.all([
@@ -177,13 +215,22 @@ export async function readRepo(repo, since) {
   }
 }
 
-/** All configured repos, scanned concurrently. */
-export async function readActivity(since) {
+/**
+ * All configured repos, scanned concurrently. With `sync`, declared repos are fetched and
+ * fast-forwarded first; this checkout is never touched, it is the one being worked in.
+ */
+export async function readActivity(since, { sync = true } = {}) {
   const { repos, configured, missing } = reposToScan()
-  const scanned = await Promise.all(repos.map((repo) => readRepo(repo, since)))
+  const scanned = await Promise.all(
+    repos.map(async (repo) => {
+      const synced = sync && repo.sync ? await syncRepo(repo.path) : null
+      return { ...(await readRepo(repo, since)), sync: synced }
+    }),
+  )
 
   return {
-    ok: scanned.every((r) => r.ok),
+    // A repo that could not be brought up to date is read anyway, but the scan is not complete.
+    ok: scanned.every((r) => r.ok && r.sync?.ok !== false),
     since: since ?? null,
     cold_start: !since,
     game_repo_configured: configured,

@@ -12,7 +12,7 @@
  * source declares an `expected_min`; coming in under it is a FAIL that sets `complete: false` and
  * a non-zero exit, and that check applies to a cached 304 exactly as it does to a fresh fetch.
  */
-import { CONFIG, IDEAS, daysSince, readIdeas, rel, today, writeIdeas } from './ctx.mjs'
+import { CONFIG, PRIVATE, daysSince, readIdeas, rel, today, writeIdeas } from './ctx.mjs'
 import { readActivity } from './git.mjs'
 import { fetchText, pool } from './http.mjs'
 import { articleSkeleton, parseFeed, parseLinks, parseSitemap, prefixHistogram } from './parse.mjs'
@@ -196,7 +196,8 @@ export async function scan({ mode = 'delta', extract = 20, refs = true } = {}) {
   // Local work does not wait on the network any more.
   const localWork = (async () => {
     const corpus = readCorpus()
-    const activity = await readActivity(newestDate(corpus))
+    // --probe writes nothing, and that includes not moving another repo's branch.
+    const activity = await readActivity(newestDate(corpus), { sync: mode !== 'probe' })
     return { corpus, activity }
   })()
 
@@ -287,5 +288,5 @@ export async function scan({ mode = 'delta', extract = 20, refs = true } = {}) {
   return { snapshot, state, failed, sourcesMissing, migrated: Boolean(state.migrated_from) }
 }
 
-export const stateFile = () => rel(`${IDEAS}/state.json`)
+export const stateFile = () => rel(`${PRIVATE}/state.json`)
 export const staleness = (state) => (state.last_scan?.at ? daysSince(state.last_scan.at) : null)

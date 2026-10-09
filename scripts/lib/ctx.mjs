@@ -16,11 +16,23 @@ import { fileURLToPath } from 'node:url'
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '..', '..')
 
 /**
- * The single place 'content/ideas' is spelled out. The config lives in that directory, so it
+ * The single place 'content/ideas' is spelled out. It holds only what is safe to publish: the
+ * config and the two schema examples. The config lives in that directory, so it
  * cannot also be the thing that declares where the directory is - the old blog.config.json had
  * a paths.ideas_dir key that eight scripts ignored in favour of hardcoding the same path.
  */
 export const IDEAS = join(ROOT, 'content', 'ideas')
+
+/**
+ * Everything the pipeline reads and writes besides the config: backlog, the real reference-blog
+ * URLs, scan bookkeeping, the snapshot with our private game repo's commit texts. This website
+ * repo is public, so none of it lives inside this checkout - not even gitignored, where a single
+ * `git add -f` would publish it. It is a clone of the private repo website-blog-context next to
+ * this one (see ideas-sync.mjs), or wherever DEVLOG_IDEAS_DIR points.
+ */
+export const PRIVATE = process.env.DEVLOG_IDEAS_DIR
+  ? resolve(process.env.DEVLOG_IDEAS_DIR)
+  : resolve(ROOT, '..', 'website-blog-context')
 
 /** Repo-relative path with forward slashes, for messages that must read the same on every OS. */
 export const rel = (abs) => relative(ROOT, abs).split(sep).join('/')
@@ -60,20 +72,20 @@ export const POSTS_DIR = join(ROOT, CONFIG.paths.posts_dir)
 export const PUBLIC_DIR = join(ROOT, CONFIG.paths.public_dir)
 export const ROUTES_DIR = join(ROOT, CONFIG.paths.routes_dir)
 
-/** Read a JSON file from content/ideas/, or null if it is not there. */
+/** Read a JSON file from the private ideas clone, or null if it is not there. */
 export function readIdeas(name) {
-  const file = join(IDEAS, name)
+  const file = join(PRIVATE, name)
   return existsSync(file) ? JSON.parse(readFileSync(file, 'utf8')) : null
 }
 
 /**
- * Write a JSON file to content/ideas/. `compact` skips the indent: state.json is bookkeeping
- * nobody reads by hand, and indenting 327 URLs is what made the old seen.json 63 KB.
+ * Write a JSON file to the private ideas clone. `compact` skips the indent: state.json is
+ * bookkeeping nobody reads by hand, and indenting 327 URLs is what made the old seen.json 63 KB.
  */
 export function writeIdeas(name, data, { compact = false } = {}) {
   const body = compact ? JSON.stringify(data) : `${JSON.stringify(data, null, 2)}\n`
-  writeFileSync(join(IDEAS, name), body)
-  return join(IDEAS, name)
+  writeFileSync(join(PRIVATE, name), body)
+  return join(PRIVATE, name)
 }
 
 export const today = () => new Date().toISOString().slice(0, 10)

@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "_comment": "SCHEMA EXAMPLE ONLY — fake path. Real local repo paths are machine-specific and personal, so they live only in repos.local.json (gitignored, never committed). Without a repos.local.json, a scan only sees this website repo. Copy this file to repos.local.json and point it at the real game repo once it exists locally.",
+  "_comment": "SCHEMA EXAMPLE ONLY. The real list lives in repos.json in the private ideas repo (website-blog-context) and is synced across machines. A relative path is resolved against that repo's folder, so keep the repos side by side and write ../<repo-folder>; an absolute path only works on the machine it was written on. Without a repos.json, a scan only sees this website repo.",
   "repos": [
     {
       "id": "game",
       "label": "HoldStrong (game)",
-      "path": "C:\\path\\to\\hold-strong"
+      "path": "../hold-strong"
     }
   ]
 }

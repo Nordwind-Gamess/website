@@ -1,6 +1,6 @@
 ---
 name: blog-write
-description: Turn an approved idea from content/ideas/backlog.json into a publishable bilingual devlog post (EN + DE) with assets and verification. Use when asked to write the next devlog post, draft a post from the backlog, or work on a specific idea id.
+description: Turn an approved idea from the backlog (../website-blog-context/backlog.json) into a publishable bilingual devlog post (EN + DE) with assets and verification. Use when asked to write the next devlog post, draft a post from the backlog, or work on a specific idea id.
 ---
 
 # Writing a devlog post from the backlog
@@ -29,7 +29,7 @@ A `type: "refresh"` idea edits an existing pair of files: update `date`, keep th
 
 ## 2. Research before structuring
 
-Read `content/ideas/scan.json` — it holds our git activity (`activity`), our own posts (`posts`) and
+Read `../website-blog-context/scan.json` — it holds our git activity (`activity`), our own posts (`posts`) and
 the shape of recent reference-blog posts (`extracted`) in one snapshot. Plus the idea's own
 `evidence` field: what you are actually going to show — a screenshot, a before/after number, the
 real diff.
@@ -96,6 +96,8 @@ draft got rewritten for breaking it.
 - **Date every screenshot and every number.** Builds change; a stale screenshot reads as a lie later.
 - **Show the failed attempt, not only the version that worked.** This is what readers come back for.
 - **Do not announce dates you are not confident in.**
+- **The game repo is private.** Describe what was built in your own words. Never link to it, and
+  ask before quoting code, file paths or commit text verbatim.
 - **Say when something is cut.** Silently dropping a promised feature is noticed and remembered.
 
 ## 5. Assets

@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "_comment": "Generic pipeline settings — no URLs, safe to commit to this public repo. The real reference-blog list lives in sources.local.json (gitignored). See sources.example.json for its shape, and docs/blog.md for what all of this does.",
+  "_comment": "Generic pipeline settings — no URLs, safe to commit to this public repo. The real reference-blog list lives in sources.local.json in the private ideas repo (website-blog-context). See sources.example.json for its shape, and docs/blog.md for what all of this does.",
   "brand": {
     "name": "Nordwind Games",
     "domain": "nordwind.games",

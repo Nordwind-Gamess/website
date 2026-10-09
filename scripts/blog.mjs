@@ -19,7 +19,7 @@ const USAGE = `blog - devlog pipeline
 
   node scripts/blog.mjs scan [--full|--seed|--probe] [--extract N] [--no-refs]
       Reference blogs, our own git activity and our own post inventory into one snapshot
-      (content/ideas/scan.json). Exit 1 if a source came in under its expected_min.
+      (../website-blog-context/scan.json). Exit 1 if a source came in under its expected_min.
         --full      baseline: refetch everything, ignore stored validators, skip extraction
         --seed      like --full, but records every URL as seen so the next delta is quiet
         --probe     reachability only, writes nothing
@@ -48,7 +48,12 @@ const USAGE = `blog - devlog pipeline
   node scripts/blog.mjs check [--strict] [--only lint|assets|backlog]
       Run the quality gates. Exit 1 on any error, or on any warning with --strict.
 
-Also available as: npm run blog:scan, npm run blog:check
+  node scripts/blog.mjs sync
+      Pull and push the private ideas repo (../website-blog-context/). add, set, note and scan
+      already do this on every run and refuse to write when the pull fails; sync is for a hand
+      edit of rejected.md, or a push that an earlier command could not finish.
+
+Also available as: npm run blog:scan, npm run blog:check, npm run blog:sync
 `
 
 const banner = (title) => {
@@ -152,7 +157,9 @@ async function scan(argv) {
   if (args.has('probe')) {
     const sources = readIdeas('sources.local.json')?.sources
     if (!sources) {
-      console.error('content/ideas/sources.local.json is missing - copy sources.example.json to it')
+      console.error(
+        '../website-blog-context/sources.local.json is missing - copy content/ideas/sources.example.json there',
+      )
       return 1
     }
     banner('probe: endpoint reachability per user-agent profile')
@@ -189,7 +196,7 @@ async function scan(argv) {
 
   banner(`sources (${mode})`)
   if (sourcesMissing) {
-    console.log('  none - content/ideas/sources.local.json is missing')
+    console.log('  none - ../website-blog-context/sources.local.json is missing')
   } else if (!snapshot.sources.length) {
     console.log('  none scanned')
   }
@@ -233,6 +240,12 @@ async function scan(argv) {
         (repo.span ? `  ${repo.span.from} … ${repo.span.to}` : '') +
         (repo.tags.length ? `  tags: ${repo.tags.map((t) => t.name).join(', ')}` : ''),
     )
+    if (repo.sync) {
+      console.log(
+        `      ${repo.sync.ok ? 'sync' : 'FAIL sync'}  ${repo.sync.detail}` +
+          (repo.sync.ok ? '' : ' - read as it is on disk, scan marked incomplete'),
+      )
+    }
     for (const c of repo.clusters.slice(0, 6)) {
       const withBody = c.commits.filter((x) => x.comment).length
       console.log(
@@ -243,8 +256,8 @@ async function scan(argv) {
   }
   if (!act.game_repo_configured) {
     console.log(
-      '\n  repos.local.json is not set up, so this is website-repo activity only.\n' +
-        '  Copy content/ideas/repos.example.json and point it at the game repo.',
+      '\n  repos.json is not set up, so this is website-repo activity only.\n' +
+        '  Copy content/ideas/repos.example.json to ../website-blog-context/repos.json.',
     )
   }
   for (const p of act.unreachable_paths)
@@ -259,14 +272,14 @@ async function scan(argv) {
   }
 
   banner('summary')
-  console.log(`  wrote content/ideas/scan.json and content/ideas/state.json`)
+  console.log(`  wrote scan.json and state.json in ../website-blog-context/`)
   console.log(`  finished in ${((Date.now() - started) / 1000).toFixed(1)}s`)
   if (sourcesMissing) {
     console.error(
-      '\nINCOMPLETE: content/ideas/sources.local.json does not exist, so no reference blog was\n' +
-        'looked at. That is not "nothing new" - it is a scan that could not look. Copy\n' +
-        'content/ideas/sources.example.json to sources.local.json and fill in the real sources,\n' +
-        'or pass --no-refs if you only wanted our own activity.',
+      '\nINCOMPLETE: ../website-blog-context/sources.local.json does not exist, so no reference\n' +
+        'blog was looked at. That is not "nothing new" - it is a scan that could not look. Copy\n' +
+        'content/ideas/sources.example.json to it and fill in the real\n' +
+        'sources, or pass --no-refs if you only wanted our own activity.',
     )
     return 1
   }
@@ -323,7 +336,9 @@ async function backlogContext() {
   ])
   const backlog = lib.load()
   if (!backlog) {
-    console.error('content/ideas/backlog.json does not exist yet - run `blog add` to create it')
+    console.error(
+      '../website-blog-context/backlog.json does not exist yet - run `blog add` to create it',
+    )
     return null
   }
   return { lib, backlog, corpus: readCorpus() }
@@ -467,6 +482,7 @@ async function add(argv) {
   console.log(
     `\n${added.length} item(s) added at status "new". Review with: node scripts/blog.mjs idea`,
   )
+  commitMessage = `backlog: add ${added.map((i) => i.id).join(' ')}`
   return 0
 }
 
@@ -519,6 +535,7 @@ async function set(argv) {
 
   lib.save(backlog)
   for (const item of changed) console.log(`${item.id} -> ${item.status}`)
+  commitMessage = `backlog: ${status} ${changed.map((i) => i.id).join(' ')}`
   return 0
 }
 
@@ -543,6 +560,7 @@ async function note(argv) {
   item.followup_log = [...(item.followup_log ?? []), { at: today(), note: text }]
   lib.save(backlog)
   console.log(`${item.id}: noted (${item.followup_log.length} entr(y/ies), status unchanged)`)
+  commitMessage = `backlog: note on ${item.id}`
   return 0
 }
 
@@ -618,8 +636,8 @@ async function check(argv) {
     banner('backlog')
     const backlog = backlogLib.load()
     if (!backlog) {
-      // content/ideas/backlog.json is gitignored, so it does not exist on a fresh CI checkout.
-      console.log('SKIP  content/ideas/backlog.json does not exist on this checkout')
+      // the private ideas repo is not cloned in CI, so the backlog does not exist there.
+      console.log('SKIP  ../website-blog-context/backlog.json does not exist on this checkout')
       results.push({ name: 'backlog', errors: [], warnings: [], skipped: true })
     } else {
       const { errors, warnings } = backlogLib.validate(backlog, corpus)
@@ -662,7 +680,24 @@ function report(errors, warnings) {
   for (const e of errors) console.error(`ERROR ${e}`)
 }
 
-const COMMANDS = { status, scan, extract, idea, add, set, note, check }
+/** Pull and push only - for a hand edit of rejected.md, or a push an earlier command could not do. */
+async function sync(argv) {
+  if (argv.length) {
+    console.error('sync takes no arguments')
+    return 2
+  }
+  return 0
+}
+
+const COMMANDS = { status, scan, extract, idea, add, set, note, check, sync }
+
+/**
+ * Commands that write to the private ideas repo pull before and push after, so no machine ever
+ * writes on top of a stale backlog. Each sets `commitMessage` once it knows what it wrote.
+ * `scan --probe` writes nothing and is left out.
+ */
+const SYNCED = ['add', 'set', 'note', 'scan', 'sync']
+let commitMessage = null
 
 const [command, ...argv] = process.argv.slice(2)
 
@@ -678,6 +713,15 @@ if (!COMMANDS[command]) {
 }
 
 try {
+  if (SYNCED.includes(command) && !(command === 'scan' && argv.includes('--probe'))) {
+    const { withIdeasSync } = await import('./lib/ideas-sync.mjs')
+    process.exit(
+      await withIdeasSync(
+        () => commitMessage ?? `${command}: ${new Date().toISOString().slice(0, 10)}`,
+        () => COMMANDS[command](argv),
+      ),
+    )
+  }
   process.exit(await COMMANDS[command](argv))
 } catch (err) {
   console.error(`blog ${command}: ${err.message}`)
