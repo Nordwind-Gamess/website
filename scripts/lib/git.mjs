@@ -97,6 +97,9 @@ function parseMerges(raw) {
 /** One repo's activity since `since` (ISO date, or null for everything). */
 export async function readRepo(repo, since) {
   const logArgs = [
+    // Otherwise git wraps any path with a non-ASCII character in quotes and escapes it.
+    '-c',
+    'core.quotePath=false',
     'log',
     '--no-merges',
     `--pretty=format:${RECORD_SEP}${['%H', '%ad', '%s', '%b'].join(FIELD_SEP)}${FIELD_SEP}`,
