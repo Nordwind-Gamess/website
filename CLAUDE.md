@@ -65,8 +65,8 @@ Die Ideen-Pipeline für den Devlog liegt in `scripts/blog.mjs` + `scripts/lib/` 
 `npm run blog:check`, `npm run blog:sync`. Wichtig: Backlog, die echten Referenz-Blog-URLs und
 alle daraus abgeleiteten State-Files liegen im privaten Repo `Nordwind-Gamess/website-blog-context`,
 geklont als Nachbarordner `../website-blog-context/` — nie in diesem öffentlichen Repo, auch nicht
-gitignored. `add`, `set`,
-`note` und `scan` pullen vorher und pushen danach; schlägt der Pull fehl, schreiben sie nichts.
+gitignored. `add`, `set`, `note` und `scan` pullen vorher und pushen danach; schlägt der Pull
+fehl, schreiben sie nichts.
 Vor dem Schreiben eines Posts `npm run blog:check` laufen lassen.
 
 ## Styling und Responsive
