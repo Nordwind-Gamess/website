@@ -68,7 +68,7 @@ The rest of the drawing is fur, wrapped leather and three spiral discs, which is
 
 To be clear about where this actually stands: nothing of this is modelled yet, exactly as with the four enemies in the bestiary post. It is a drawing, and the 3D work comes after the [demo on 16 October](/holdstrong/).
 
-> **Update, 15 October 2026:** I am moving the demo back by thirty days. It now comes out on **15 November 2026**, and the official announcement follows in its own post.
+> **Update, 15 October 2026:** I am moving the demo back by thirty days. It now comes out on **15 November 2026**, and I explain why in [its own post](/blog/demo-moves-to-november/).
 
 ## The one thing I have not decided
 

@@ -12,7 +12,7 @@ Until a few weeks ago my honest answer to that was a list of names in my design 
 
 One thing I want to get out of the way right at the start: everything you see here is pure concept art that I drew to make my own work easier later on. None of it has been modelled in 3D or put into the game yet, and the free demo in October will not contain all four of them either.
 
-> **Update, 15 October 2026:** I am moving the demo back by thirty days. It now comes out on **15 November 2026**, and the official announcement follows in its own post.
+> **Update, 15 October 2026:** I am moving the demo back by thirty days. It now comes out on **15 November 2026**, and I explain why in [its own post](/blog/demo-moves-to-november/).
 
 ## A mere presence has no army
 

@@ -12,7 +12,7 @@ Bis vor ein paar Wochen bestand meine ehrliche Antwort auf diese Frage nur aus e
 
 Eine wichtige Information möchte ich direkt vorwegnehmen: Alles, was ihr hier seht, ist reines Concept-Art, das ich gezeichnet habe, um mir selbst die spätere Arbeit zu erleichtern. Bisher habe ich noch nichts davon in 3D modelliert oder ins Spiel integriert, und die kostenlose Demo im Oktober wird auch noch nicht alle vier Gegner enthalten.
 
-> **Update vom 15. Oktober 2026:** Ich verschiebe die Demo um dreißig Tage. Sie erscheint jetzt am **15. November 2026**, die offizielle Ankündigung folgt in einem eigenen Beitrag.
+> **Update vom 15. Oktober 2026:** Ich verschiebe die Demo um dreißig Tage. Sie erscheint jetzt am **15. November 2026**, und warum, erkläre ich in [einem eigenen Beitrag](/de/blog/demo-moves-to-november/).
 
 ## Eine bloße Präsenz hat keine Armee
 
