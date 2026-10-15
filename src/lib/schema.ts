@@ -112,7 +112,7 @@ export function videoGame(site: URL): Node {
 		inLanguage: 'en',
 		author: { '@id': nodeId(site, ORGANIZATION) },
 		publisher: { '@id': nodeId(site, ORGANIZATION) },
-		// No datePublished: 16 October 2026 is when the demo opens, not a release
+		// No datePublished: 15 November 2026 is when the demo opens, not a release
 		// date, and claiming otherwise would be wrong the moment it ships.
 		//
 		// No offers: the Steam links on the page are still href="#". An offer

@@ -68,6 +68,8 @@ Der Rest der Zeichnung besteht aus Fell, gewickeltem Leder und drei Spiralscheib
 
 Damit klar ist, wo das Ganze wirklich steht: Davon ist noch nichts modelliert, genau wie bei den vier Gegnern aus dem Bestiarium. Es ist eine Zeichnung, und die 3D-Arbeit kommt nach der [Demo am 16. Oktober](/holdstrong/).
 
+> **Update vom 15. Oktober 2026:** Ich verschiebe die Demo um dreißig Tage. Sie erscheint jetzt am **15. November 2026**, die offizielle Ankündigung folgt in einem eigenen Beitrag.
+
 ## Die eine Sache, die ich noch nicht entschieden habe
 
 Seine Familie taucht nie auf. Es gibt im Spiel, so wie es heute steht, keine Zwischensequenz, keine Rückblende und keine Zeile Dialog über sie.

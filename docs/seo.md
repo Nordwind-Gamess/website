@@ -165,7 +165,7 @@ also Duplicate Content, den man danach wieder einfangen müsste. Ab etwa zwanzig
 
 Markup macht die Seite maschinenlesbar; **zitiert** wird sie wegen der Textform. Für neue Posts:
 
-- **Fakten-Sätze statt Marketing.** „Der öffentliche Demo-Start ist der 16. Oktober 2026, kostenlos
+- **Fakten-Sätze statt Marketing.** „Der öffentliche Demo-Start ist der 15. November 2026, kostenlos
   auf Steam" ist zitierbar. „Bald verfügbar" nicht. Datum, Zahl, Eigenname in _einem_ Satz.
 - **Definitionssatz oben.** Ein Retrieval-System sieht oft nur einen Chunk, also sollte der erste
   Satz ohne Kontext funktionieren („HoldStrong ist ein …").

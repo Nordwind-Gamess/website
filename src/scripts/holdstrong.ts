@@ -28,7 +28,7 @@ type Els = {
 
 type SignupResult = { ok: true } | { ok: false; reason: 'unreachable' | 'rejected' };
 
-const DEMO_TARGET = new Date('2026-10-16T10:00:00Z').getTime();
+const DEMO_TARGET = new Date('2026-11-15T10:00:00Z').getTime();
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/;
 const REQUEST_TIMEOUT_MS = 15_000;
 

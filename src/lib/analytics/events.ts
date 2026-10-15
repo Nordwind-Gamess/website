@@ -128,7 +128,7 @@ export type AnalyticsEvents = {
 	// ---------------------------------------------------------------------
 	// Declared but never emitted yet: nothing on the page carries them. The
 	// gallery is placeholder blocks rather than images, there is no trailer, no
-	// share button, and the demo ships on 16 October. They are typed up front
+	// share button, and the demo ships on 15 November. They are typed up front
 	// because GA4 collects nothing retroactively — a key event or custom
 	// dimension only gathers data from the day it was registered.
 	// ---------------------------------------------------------------------
