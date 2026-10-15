@@ -61,12 +61,21 @@ nicht erst an.
 
 ## Die Galerie auf /holdstrong/
 
-Vier Gegner-Turnarounds aus `src/assets/concept/`, eingebunden über `<Image>` aus `astro:assets` —
-die Originale sind 2752px breit und würden sonst für eine 500px-Kachel komplett ausgeliefert.
+Sechs Gameplay-Screenshots aus `src/assets/gameplay/`, danach vier Gegner-Turnarounds aus
+`src/assets/concept/`, alle eingebunden über `<Image>` aus `astro:assets` — die Originale sind bis
+zu 2752px breit und würden sonst für eine 500px-Kachel komplett ausgeliefert.
 
-Ein Knoten trägt beide Rollen: `.hs-gallery-body` ist oberhalb 1024px ein 2×2-Grid, zwischen 640px
-und 1023px einspaltig (zwei Spalten würden vier Figuren in eine ~290px-Kachel quetschen) und
-unterhalb 640px derselbe Knoten als Flex-Scroller.
+Die Daten stehen als `GALLERY` im Frontmatter von `holdstrong.astro`. Jeder Eintrag trägt eine
+**Flagge** (`flag`/`flagLabel`), die als Badge oben links auf dem Bild steht: `Concept art` (blau)
+oder `Work in progress · October 2026` (orange). Ein Screenshot nennt immer den Monat, in dem er
+entstanden ist — Builds ändern sich, und ein undatierter Screenshot liest sich später als Aussage
+über den aktuellen Stand. Neue Screenshots bekommen also ein neues Label, alte behalten ihres.
+
+Die Punkte unter dem Karussell werden aus `GALLERY` erzeugt, die Zahl passt also automatisch.
+
+Ein Knoten trägt beide Rollen: `.hs-gallery-body` ist oberhalb 1024px ein zweispaltiges Grid,
+zwischen 640px und 1023px einspaltig (zwei Spalten würden eine ganze Spielszene in eine
+~290px-Kachel quetschen) und unterhalb 640px derselbe Knoten als Flex-Scroller.
 
 **Die Kacheln sind 2:1, die Bilder 16:9** — auf allen Breiten gleich. Die Figuren stehen in einem
 waagerechten Band in der Bildmitte, oben und unten ist Leerraum; `object-fit: cover` schneidet also
@@ -74,14 +83,19 @@ genau den Leerraum weg und nicht die Kunst. Das gilt auf dem Handy genauso: die 
 flacheren Zuschnitt nicht kleiner (bei `cover` bestimmt die Kachelbreite die Skalierung), es
 verschwindet nur toter Raum.
 
-`object-position` steht auf `center 30%`, nicht auf `center`. Die Figuren sitzen auf jedem Blatt
-oberhalb der Bildmitte — ein mittiger Zuschnitt ließe eine Lücke unter ihren Füßen.
+Bei den Screenshots schneidet derselbe Zuschnitt oben und unten je etwa 5 % weg, also einen
+schmalen Rand der HUD-Leisten.
+
+`object-position` kommt pro Bild aus `GALLERY` (`position`) als Inline-Style. Die Turnarounds
+stehen auf `center 30%`, nicht auf `center`: Die Figuren sitzen auf jedem Blatt oberhalb der
+Bildmitte, und ein mittiger Zuschnitt ließe eine Lücke unter ihren Füßen. Die Screenshots stehen
+auf `center`.
 
 `.hs-gallery-img` braucht zwingend `height: auto`. Astro rendert `width`/`height` als Attribute,
 und ohne das Zurücksetzen gewinnt die intrinsische Höhe — `aspect-ratio` greift dann nie und die
 Kachel wird 1548px hoch.
 
-Die Turnarounds sind **freigestellt** (Alphakanal, 66–90 % transparent). Der Kachelhintergrund
+Die Turnarounds (nicht die Screenshots) sind **freigestellt** (Alphakanal, 66–90 % transparent). Der Kachelhintergrund
 scheint also durch und die Figuren stehen auf der Seite selbst — deshalb ist der 2:1-Zuschnitt hier
 nicht nur Kosmetik: transparenter Leerraum liest sich als Loch, wo eine Hintergrundfläche bloß wie
 eine Hintergrundfläche ausgesehen hätte. Wer die Assets je gegen Fassungen mit Hintergrund

@@ -9,12 +9,78 @@ import draugr from '../assets/concept/draugr_concept_art_game_HoldStrong.webp';
 import fenrirBrood from '../assets/concept/fenrir_brood_concept_art_game_HoldStrong.webp';
 import hrimthurs from '../assets/concept/hrimthur_concept_art_game_HoldStrong.webp';
 import icespearman from '../assets/concept/Icespearman_concept_art_game_HoldStrong.webp';
+import gameplay from '../assets/gameplay/gameplay.png';
+import godsLoki from '../assets/gameplay/gods_Loki.png';
+import godsThor from '../assets/gameplay/gods_Thor.png';
+import godsTyr from '../assets/gameplay/gods_Tyr.png';
+import rewardSelection from '../assets/gameplay/rewardSelection.png';
+import skillTree from '../assets/gameplay/skillTree.png';
 
 const site = Astro.site!;
 
+// Every tile carries a flag saying what kind of image it is, because a concept
+// sheet and a build screenshot make different promises about the finished game.
+// A screenshot's flag names the month it was taken: builds change, and an
+// undated screenshot reads as a claim about today.
+type GalleryItem = {
+	image: ImageMetadata;
+	name: string;
+	epithet: string;
+	alt: string;
+	flag: 'concept' | 'wip';
+	flagLabel: string;
+	/** object-position for the 2:1 crop. */
+	position: string;
+};
+
+const WIP_OCT_2026 = 'Work in progress · October 2026';
+
+// Screenshots first, as the newest material: the fight itself, the three gods,
+// then the two screens between days.
+const SCREENSHOTS: GalleryItem[] = [
+	{
+		image: gameplay,
+		name: 'The tower',
+		epithet: 'Day 7, last round',
+		alt: 'HoldStrong gameplay screenshot from the work-in-progress build, October 2026 — top-down view of the tower in a snowfield, surrounded by glowing enemy markers, with the round counter at the top and the three god abilities at the bottom.',
+	},
+	{
+		image: godsThor,
+		name: 'Thor',
+		epithet: 'Chain lightning',
+		alt: "HoldStrong gameplay screenshot from the work-in-progress build, October 2026 — Thor's chain lightning arcing from enemy to enemy next to the tower, with damage numbers above the hits.",
+	},
+	{
+		image: godsLoki,
+		name: 'Loki',
+		epithet: 'The double',
+		alt: "HoldStrong gameplay screenshot from the work-in-progress build, October 2026 — a bright flash and a red area of effect beside the tower while Loki's ability is in play.",
+	},
+	{
+		image: godsTyr,
+		name: 'Týr',
+		epithet: 'The duel',
+		alt: 'HoldStrong gameplay screenshot from the work-in-progress build, October 2026 — a crowd of enemies pressing in on the tower while Týr’s ability is active, with “missed” callouts floating above the fight.',
+	},
+	{
+		image: rewardSelection,
+		name: 'Day complete',
+		epithet: 'Choose your reward',
+		alt: 'HoldStrong reward screen from the work-in-progress build, October 2026 — “Day 7 complete” above three reward cards: Trickster’s Gift, Long Sight and Divine Spark.',
+	},
+	{
+		image: skillTree,
+		name: 'The skill tree',
+		epithet: 'Abilities among the stars',
+		alt: 'HoldStrong skill tree from the work-in-progress build, October 2026 — glowing rune nodes connected like a constellation, with a tooltip for one of Loki’s abilities.',
+	},
+].map((item) => ({ ...item, flag: 'wip' as const, flagLabel: WIP_OCT_2026, position: 'center' }));
+
 // The four enemy turnarounds, in the order they read best: the personal one
 // first, then the two that answer to a god or to the ice, then the footsoldier.
-const CONCEPT_ART = [
+// The figures sit above the middle of every sheet, so a centred crop would
+// leave a gap under their feet; 30% lands their mass in the middle of the tile.
+const CONCEPT_ART: GalleryItem[] = [
 	{
 		image: draugr,
 		name: 'Draugr',
@@ -39,7 +105,9 @@ const CONCEPT_ART = [
 		epithet: 'The ice, given reach',
 		alt: 'Icespearman concept art for HoldStrong — three views of a gaunt, faceless ice figure holding a long spear.',
 	},
-];
+].map((item) => ({ ...item, flag: 'concept' as const, flagLabel: 'Concept art', position: 'center 30%' }));
+
+const GALLERY: GalleryItem[] = [...SCREENSHOTS, ...CONCEPT_ART];
 ---
 
 <html lang="en">
@@ -149,7 +217,7 @@ const CONCEPT_ART = [
 				<div class="hs-countdown-inner">
 					<div>
 						<div class="hs-eyebrow hs-eyebrow-blue">The demo opens the gates in</div>
-						<div class="hs-countdown-date">15 November 2026 · free on Steam</div>
+						<div class="hs-countdown-date">15 November 2026 · free</div>
 					</div>
 					<div class="hs-countdown-units">
 						<div class="hs-countdown-unit">
@@ -217,17 +285,17 @@ const CONCEPT_ART = [
 			<section id="gallery" class="hs-gallery" data-analytics-section="gallery">
 				<div class="hs-section">
 					<div class="hs-gallery-head">
-						<h2 class="hs-h2">The ice sends these</h2>
-						<div class="hs-gallery-note">Concept art · in-game look may differ</div>
+						<h2 class="hs-h2">Gallery</h2>
 					</div>
 					<!--
-					  The turnarounds are 16:9 with the figures in a horizontal band across the
-					  middle, so the tiles are 2:1 and object-fit crops the empty sky and floor
-					  away rather than the art. Below 640px this scroller becomes the carousel.
+					  Every image is 16:9 and every tile 2:1. On the turnarounds the figures sit in a
+					  horizontal band, so the crop takes empty sky and floor; on the screenshots it
+					  takes a thin strip off the top and bottom edge. Below 640px this scroller
+					  becomes the carousel.
 					-->
 					<div class="hs-gallery-body hs-gallery-scroll" id="hs-gallery-scroll">
 						{
-							CONCEPT_ART.map(({ image, name, epithet, alt }) => (
+							GALLERY.map(({ image, name, epithet, alt, flag, flagLabel, position }) => (
 								<figure class="hs-gallery-slot">
 									<Image
 										src={image}
@@ -236,8 +304,12 @@ const CONCEPT_ART = [
 										widths={[480, 800, 1200, 1600]}
 										sizes="(max-width: 1023px) 92vw, 500px"
 										class="hs-gallery-img"
+										style={`object-position: ${position}`}
 										loading="lazy"
 									/>
+									<span class="hs-gallery-flag" data-flag={flag}>
+										{flagLabel}
+									</span>
 									<figcaption class="hs-gallery-caption">
 										<span class="hs-gallery-name">{name}</span>
 										<span class="hs-gallery-epithet">{epithet}</span>
@@ -248,7 +320,7 @@ const CONCEPT_ART = [
 					</div>
 					<!-- Carousel position indicator. Display only, never a control. -->
 					<div class="hs-gallery-dots" id="hs-gallery-dots" aria-hidden="true">
-						<span></span><span></span><span></span><span></span>
+						{GALLERY.map(() => <span />)}
 					</div>
 				</div>
 			</section>
@@ -265,7 +337,7 @@ const CONCEPT_ART = [
 					<div class="hs-feature-grid">
 						<div class="hs-feature-card">
 							<div class="hs-feature-title" style="color:#7fd4ff">Early access</div>
-							<p class="hs-feature-body">A Steam key for the test build, weeks ahead of the public demo.</p>
+							<p class="hs-feature-body">Access to the test build, weeks ahead of the public demo.</p>
 						</div>
 						<div class="hs-feature-card">
 							<div class="hs-feature-title" style="color:#ff9d5c">Direct line to us</div>
@@ -282,7 +354,7 @@ const CONCEPT_ART = [
 					<div class="hs-signup-success" id="hs-success" hidden>
 						<div class="hs-signup-success-title">You're on the playtest list.</div>
 						<p class="hs-signup-success-body">
-							We'll send your test key and the feedback brief to <span id="hs-success-email"></span> before 15 November.
+							We'll send your test access and the feedback brief to <span id="hs-success-email"></span> before 15 November.
 						</p>
 					</div>
 
@@ -725,14 +797,7 @@ const CONCEPT_ART = [
 		gap: 24px;
 		flex-wrap: wrap;
 	}
-	.hs-gallery-note {
-		font-family: 'Barlow Condensed', sans-serif;
-		font-size: 13px;
-		letter-spacing: 0.22em;
-		text-transform: uppercase;
-		color: #6f7b8e;
-	}
-	/* Four equal tiles, two per row. Below 640px this same element becomes the
+	/* Equal tiles, two per row. Below 640px this same element becomes the
 	   carousel instead - see the media block at the end. */
 	.hs-gallery-body {
 		display: grid;
@@ -745,6 +810,7 @@ const CONCEPT_ART = [
 		display: none;
 	}
 	.hs-gallery-slot {
+		position: relative;
 		margin: 0;
 		min-width: 0;
 		border: 1px solid rgba(127, 212, 255, 0.16);
@@ -765,9 +831,30 @@ const CONCEPT_ART = [
 		height: auto;
 		aspect-ratio: 2 / 1;
 		object-fit: cover;
-		/* The figures sit above the middle of every sheet, so a centred crop leaves
-		   a gap under their feet. This lands their mass in the middle of the tile. */
-		object-position: center 30%;
+		/* object-position is set per image from GALLERY: the turnarounds want a
+		   higher crop than the screenshots. */
+	}
+	/* What kind of image this is. Sits on the image, not in the caption, so it
+	   stays visible in the carousel where the caption can wrap. */
+	.hs-gallery-flag {
+		position: absolute;
+		top: 12px;
+		left: 12px;
+		padding: 4px 9px;
+		font-family: 'Barlow Condensed', sans-serif;
+		font-size: 12px;
+		font-weight: 600;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		background: rgba(9, 13, 22, 0.82);
+		border: 1px solid currentColor;
+		pointer-events: none;
+	}
+	.hs-gallery-flag[data-flag='wip'] {
+		color: #ff9d5c;
+	}
+	.hs-gallery-flag[data-flag='concept'] {
+		color: #7fd4ff;
 	}
 	.hs-gallery-caption {
 		display: flex;
@@ -1063,8 +1150,8 @@ const CONCEPT_ART = [
 			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 		}
 
-		/* Two columns would put four figures into a ~290px tile. One column keeps
-		   the turnaround readable. */
+		/* Two columns would put four figures, or a whole battlefield, into a ~290px
+		   tile. One column keeps the image readable. */
 		.hs-gallery-body {
 			grid-template-columns: 1fr;
 		}

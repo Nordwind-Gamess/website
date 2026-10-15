@@ -62,7 +62,7 @@ export const HOME: StaticPage = {
 export const HOLDSTRONG: StaticPage = {
 	path: '/holdstrong/',
 	title: `${GAME_FULL_NAME} — ${SITE_NAME}`,
-	description: `${GAME_NAME} is an incremental Viking roguelike tower defense by ${SITE_NAME}. The free demo lands on Steam on 15 November 2026; playtest keys go out before that.`,
+	description: `${GAME_NAME} is an incremental Viking roguelike tower defense by ${SITE_NAME}. The free demo arrives on 15 November 2026; playtesters get access before that.`,
 };
 
 export const STATIC_PAGES: StaticPage[] = [HOME, HOLDSTRONG];
