@@ -12,6 +12,8 @@ Bis vor ein paar Wochen bestand meine ehrliche Antwort auf diese Frage nur aus e
 
 Eine wichtige Information möchte ich direkt vorwegnehmen: Alles, was ihr hier seht, ist reines Concept-Art, das ich gezeichnet habe, um mir selbst die spätere Arbeit zu erleichtern. Bisher habe ich noch nichts davon in 3D modelliert oder ins Spiel integriert, und die kostenlose Demo im Oktober wird auch noch nicht alle vier Gegner enthalten.
 
+> **Update vom 15. Oktober 2026:** Ich verschiebe die Demo um dreißig Tage. Sie erscheint jetzt am **15. November 2026**, und warum, erkläre ich in [einem eigenen Beitrag](/de/blog/demo-moves-to-november/).
+
 ## Eine bloße Präsenz hat keine Armee
 
 Was das Ewige Eis als Bedrohung so spannend macht, ist gleichzeitig meine größte Hürde beim Gegner-Design: Das Eis hat keinen König, keinen Rat und keinen finsteren Frostlord auf einem Thron. Es gibt niemanden, mit dem man verhandeln könnte, und niemanden, der Befehle erteilt. Das Eis ist kein Volk. Es rückt einfach unaufhaltsam vor, und das ist seine einzige Eigenschaft.

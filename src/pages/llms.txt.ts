@@ -44,7 +44,7 @@ export const GET: APIRoute = async ({ site }) => {
 		'- Genre: incremental roguelike tower defense, single player.',
 		'- Setting: Rimehold, the last outpost before the Eternal Ice. You play an Einheri sent back at every dawn.',
 		'- Platform: PC, via Steam.',
-		`- Public demo: ${DEMO_DATE}, free on Steam. Playtest keys go out before that date.`,
+		`- Public demo: ${DEMO_DATE}, free. Playtesters get access before that date.`,
 		'- Not yet released. No launch date has been announced.',
 		`- Community: ${DISCORD_INVITE}`,
 		'',
