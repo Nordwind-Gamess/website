@@ -136,5 +136,8 @@ aufreißen. Sie bleiben bei ihrer Zeilenhöhe.
 - **Kein `:focus-visible`.** Der einzige Fokus-Stil der Seite ist `.hs-input:focus`, während
   `a { text-decoration: none }` global die Standard-Affordanz entfernt. Tastaturnutzer bekommen
   nirgends eine Fokusanzeige.
-- **Render-blockierende Google Fonts.** `/holdstrong/` lädt drei Familien in acht Schnitten, der
+- **Render-blockierende Google Fonts.** `/holdstrong/` lädt drei Familien in sieben Schnitten, der
   Devlog zwei weitere. Auf Mobilfunk der größte verbliebene Ladekostenpunkt.
+- **Synthetisches Fett bei Metamorphous.** Die Überschriften-Schrift von `/holdstrong/` gibt es nur
+  in 400; die `font-weight: 600/800`-Angaben bleiben bewusst stehen und werden vom Browser
+  künstlich gefettet.
