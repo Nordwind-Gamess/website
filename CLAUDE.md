@@ -96,7 +96,7 @@ Vorsicht bei `--fg`, `--line`, `--gamebg`, `--gamelift`, `--gameshadow` auf `.si
 Theme-Tokens, sondern Kanäle, die `src/scripts/storm-cloud.ts` pro Animationsframe beschreibt.
 
 Vollständige Doku inklusive der beiden Karussells auf `/holdstrong/` und der offenen Punkte
-(CLS bei Markdown-Bildern, 1 MB Keyart, fehlendes `:focus-visible`): [docs/styling.md](./docs/styling.md)
+(CLS bei Markdown-Bildern, Keyart ohne `srcset`, fehlendes `:focus-visible`): [docs/styling.md](./docs/styling.md)
 — bei Änderungen mitpflegen.
 
 ## Dokumentation
