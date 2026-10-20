@@ -41,6 +41,22 @@ Wird ein Wert responsiv, dann bevorzugt per `clamp()` in der bestehenden Regel s
 Breakpoint-Sprung. Sprünge sind für Dinge, die ihre Form ändern (Grid → Karussell), nicht für
 Zahlen, die kleiner werden sollen.
 
+## Farben und Keyart auf /holdstrong/
+
+Die Palette folgt dem Keyart. Das ist eine eisblaue Nachtszene, deren einzige warme Stelle das
+Runenleuchten am Turm ist. Die Seite hat deshalb genau eine warme Akzentfamilie, nämlich
+Bernstein: `#f2a33a` (Akzent, Fokusrand, Glows), `#ffbb5c` (Thor, Countdown, WIP-Flagge),
+`#ffcf85` (heller Akzenttext) und den CTA-Verlauf `#f9b24e → #d4831c`. Daneben stehen Eisblau
+`#7fd4ff`, Violett `#a271ff`/`#c3a6ff` als Blitzfarbe und Blauschwarz `#070a11` als Grund. Das
+Fehlerrot `#ff7a6b` gehört bewusst nicht zur Bernsteinfamilie. Wechselt das Keyart, wird diese
+Akzentfamilie als Ganzes neu abgeleitet, nicht einzelne Werte.
+
+Der Hero lädt `public/holdstrong/keyart.webp` (1232×706, ~50 KB). `keyart.png` daneben ist der
+verlustfreie Master für [`scripts/make-og-images.mjs`](../scripts/make-og-images.mjs). Es liegt
+zwar unter `public/`, aber keine Seite referenziert es. Das WebP entsteht aus dem PNG per `sharp` mit `quality: 82`. Der Turm steht
+rechts der Bildmitte, daher setzt der Handy-Block `object-position: 78% 35%`, sonst zeigt der
+Hochformat-Ausschnitt nur Himmel.
+
 ## Die beiden Karussells auf /holdstrong/
 
 Unterhalb von 640px werden Götter und Galerie horizontal wischbar. Sie sehen **absichtlich
@@ -67,7 +83,7 @@ zu 2752px breit und würden sonst für eine 500px-Kachel komplett ausgeliefert.
 
 Die Daten stehen als `GALLERY` im Frontmatter von `holdstrong.astro`. Jeder Eintrag trägt eine
 **Flagge** (`flag`/`flagLabel`), die als Badge oben links auf dem Bild steht: `Concept art` (blau)
-oder `Work in progress · October 2026` (orange). Ein Screenshot nennt immer den Monat, in dem er
+oder `Work in progress · October 2026` (bernstein). Ein Screenshot nennt immer den Monat, in dem er
 entstanden ist — Builds ändern sich, und ein undatierter Screenshot liest sich später als Aussage
 über den aktuellen Stand. Neue Screenshots bekommen also ein neues Label, alte behalten ihres.
 
@@ -130,9 +146,10 @@ aufreißen. Sie bleiben bei ihrer Zeilenhöhe.
 - **CLS bei Markdown-Bildern.** Markdown erzeugt `<img>` ohne `width`/`height`, es wird also kein
   Platz reserviert. Ehrlich lösbar nur per Rehype-Plugin oder `astro:assets`; ein CSS-`aspect-ratio`
   würde Bilder mit abweichendem Seitenverhältnis verzerren.
-- **`public/holdstrong/keyart.png` ist 1,02 MB** und geht unverarbeitet an jedes Gerät. `sharp`
-  liegt bereits in `node_modules` (Astro bringt es mit), `astro:assets` wäre also ohne neue
-  Dependency machbar — die Bilder müssten nur nach `src/assets/` wandern.
+- **Das Keyart läuft an der `astro:assets`-Pipeline vorbei.** Das WebP (~50 KB) ist von Hand
+  erzeugt, und jedes Gerät bekommt dieselben 1232px, weil es kein `srcset` gibt. `sharp` liegt
+  bereits in `node_modules` (Astro bringt es mit), `astro:assets` wäre also ohne neue Dependency
+  machbar. Das Bild müsste dafür nur nach `src/assets/` wandern.
 - **Kein `:focus-visible`.** Der einzige Fokus-Stil der Seite ist `.hs-input:focus`, während
   `a { text-decoration: none }` global die Standard-Affordanz entfernt. Tastaturnutzer bekommen
   nirgends eine Fokusanzeige.
