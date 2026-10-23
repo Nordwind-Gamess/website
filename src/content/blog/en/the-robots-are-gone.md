@@ -1,18 +1,16 @@
 ---
 title: The robots are gone
 description: 'For the first time, the HoldStrong prototype looks like HoldStrong: the Draugr and the Hrímthurs in 3D, the Einheri with a bow, a ballista on the tower, and new light over the snow. Plus an honest list of what is still a placeholder.'
-date: 2026-10-09
+date: 2026-10-30
 ---
 
-![The GamePlay scene of HoldStrong as of 9 October 2026 — the tower of Rimehold at night with its snow-covered walkway and ballista, the Einheri with his bow in front of it, and Draugr and a Hrímthurs advancing across the snow](/blog/the-robots-are-gone/hero.webp)
+![The GamePlay scene of HoldStrong in the work-in-progress build, late October 2026 — the tower of Rimehold from above in the snow, ringed by torches, the Einheri at its foot, enemies closing in from all sides, and the edge of the screen glowing red because the tower is being hit](/blog/the-robots-are-gone/hero.webp)
 
-At the end of the [bestiary post](/blog/what-the-ice-sends/) I promised that the next post would be about whichever enemy made the jump to a real 3D model first. The honest answer turned out to be: two of them at once, and they brought company. In the last two weeks of September, every robot left the battlefield, and for the first time the prototype on my screen looks like the game I have been describing here.
+In the [bestiary post](/blog/what-the-ice-sends/) every enemy was still just a drawing, and I wrote that the Draugr and the Hrímthurs would be playable in the demo. So the question was which of them would make the jump to a real 3D model first. The honest answer turned out to be: two of them at once, and they brought company. In the last two weeks of September, every robot left the battlefield, and for the first time the prototype on my screen looks like the game I have been describing here.
 
-This post is a before and after. It shows what the prototype looked like until the end of September, what replaced it, and, just as importantly, what is still standing in for something better.
+So this post looks back at that change. It tells you what the prototype looked like until the end of September, what replaced it, and, just as importantly, what is still standing in for something better. The screenshots come from the current build of late October. That is why you will already see the pencil HUD and the outline from the [last post](/blog/drawn-in-pencil/) in them.
 
 ## The robot era
-
-![The GamePlay scene of HoldStrong in late September 2026, before the new models — the same view of the tower, defended by a placeholder soldier with an assault rifle and attacked by grey sample robots](/blog/the-robots-are-gone/robot-era.webp)
 
 For months, the outpost Rimehold was defended by a modern soldier with an assault rifle. He was a demo character I had borrowed from an effects package, muzzle flash and ejected shells included. He was attacked by two kinds of robots, a weak one and a strong one, both built from a free sample robot that ships with the engine's starter content. On top of the tower stood a grenade launcher.
 
@@ -22,7 +20,7 @@ The downside is that you start to stop seeing them. After enough test runs, a ro
 
 ## The ice, now in 3D
 
-![The Draugr and the Hrímthurs as 3D models in the HoldStrong prototype, side by side on the snow, with the much larger rime giant towering over the undead warrior](/blog/the-robots-are-gone/draugr-hrimthurs.webp)
+![The Draugr and the Hrímthurs as 3D models in the work-in-progress build, late October 2026 — Draugr closing in on the tower from all sides in long ranks, with a Hrímthurs standing right at its wall](/blog/the-robots-are-gone/draugr-hrimthurs.webp)
 
 The Draugr and the Hrímthurs are the two enemies the bestiary named for the demo, so they came first. The Draugr are Rimehold's own fallen defenders, raised again by the ice in the same mail they died in. The Hrímthurs is a rime giant who was asleep in the ice long before anyone lived in the north, and who only cares about tearing down the tower.
 
@@ -34,7 +32,7 @@ The ragdolls did not survive the swap so gracefully. What went wrong there is a 
 
 ## The Einheri gets his bow
 
-![The Einheri as a 3D model in the HoldStrong prototype — a Viking in a horned helmet and fur mantle, drawing a bow on the snow in front of the tower](/blog/the-robots-are-gone/einheri-bow.webp)
+![The Einheri as a 3D model in the work-in-progress build, late October 2026 — a Viking in a horned helmet and fur mantle standing with his bow in the snow in front of the tower, the ballista on top of it, torches around and a night sky full of stars](/blog/the-robots-are-gone/einheri-bow.webp)
 
 The soldier with the assault rifle is gone as well. In his place you now play the Einheri, the nameless dead warrior Odin sends back down to Rimehold every morning, as a Viking in the horned helmet from [his own post](/blog/the-man-without-a-name/).
 
@@ -42,23 +40,22 @@ There is one change I owe you an explanation for. In earlier posts he fought wit
 
 The tower got the same treatment. The grenade launcher is now a ballista, a giant crossbow mounted on a new walkway around the top of the tower. I gave that walkway a material that keeps snow on its upper surfaces, so it looks as if it has been standing out in the cold for a long time. It is a small detail, but I like it a great deal.
 
-![The ballista on the snow-covered walkway at the top of the tower in the HoldStrong prototype, aimed out over the battlefield](/blog/the-robots-are-gone/ballista.webp)
+![The ballista on top of the tower in the work-in-progress build, late October 2026, seen from above — enemies closing in all around, and orange damage numbers from its hits piling up on the right](/blog/the-robots-are-gone/ballista.webp)
 
 ## Light and snow
 
 New models in old light still look like a prototype, so the last step was the lighting. The main light is weaker now and casts hard shadows, and a second, softer fill light keeps the figures from disappearing into black on the side facing away from it. The torches on the tower burn noticeably brighter and further, which matters because they are the only warm colour in the whole picture. Above all of it there is now a proper night sky.
 
-On top of that comes a layer of post-processing: a vignette that darkens the edges, a colour grading that treats shadows, midtones and highlights separately, and a very light colour fringing at the edge of the screen. None of it is dramatic on its own. Together, though, it makes the difference between "a level in an engine" and "a cold night at the edge of the world". You can see that most clearly if you compare the two screenshots at the top of this post.
+On top of that comes a layer of post-processing: a vignette that darkens the edges, a colour grading that treats shadows, midtones and highlights separately, and a very light colour fringing at the edge of the screen. None of it is dramatic on its own. Together, though, it makes the difference between "a level in an engine" and "a cold night at the edge of the world". You can see that most clearly in the picture of the Einheri in front of the tower further up.
 
 ## What is still placeholder
 
-So that this post does not look like more progress than there is, here is what is still missing or provisional as of today:
+So that this post does not look like more progress than there is, here is what is still missing or provisional:
 
-- **The Fenrir brood and the Icespearman** already exist as models, but they are not in the game yet. As I wrote in the bestiary, they are coming in together, because each only works with the other.
+- **The Fenrir brood and the Icespearman** only existed as models when the robots left. Since 19 October both are in the prototype, and they came in together, as announced in the bestiary, because each only works with the other. By now they also run, bite and throw with animations of their own.
 - **The Jötunn and the larva of Nidhöggr** have no model at all yet.
-- **The main menu** still has two objects in it named after the old robots. The new models are already inside them, so only the names are left.
 - **The lighting values** are a first pass and will change once more people have played it.
 
-To sum it up: as of 9 October, the two enemies of the [demo](/holdstrong/), the player character and the tower's weapon are real models, and the scene finally has a mood. The rest of the bestiary still lies ahead of me.
+To sum it up: since the end of September, the two enemies of the [demo](/holdstrong/), the player character and the tower's weapon are real models, and the scene finally has a mood. The Fenrir brood and the Icespearman have joined them since, and the rest of the bestiary still lies ahead of me.
 
 If one of the models looks wrong to you, or you have an opinion about the bow, tell me on <a href="https://discord.com/invite/RDk2UGcQ97" rel="noopener" data-analytics="outbound" data-analytics-id="discord" data-analytics-location="section">my Discord</a>. I would rather hear it now than after the next fifty test runs.
