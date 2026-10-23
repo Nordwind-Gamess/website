@@ -11,9 +11,9 @@
  * Usage: node scripts/make-og-images.mjs
  *
  * Why 1200x630: it is what X, LinkedIn and Discord crop their large cards to.
- * The key art is 1024x559, so 1.83:1 against the target's 1.90:1 — close enough
- * that fitting the width and trimming the height costs about 25px off the top
- * and bottom, well clear of the tower and the warrior.
+ * The key art is 1232x706, so 1.75:1 against the target's 1.90:1 — close enough
+ * that fitting the width and trimming the height costs about 29px off the top
+ * and bottom, well clear of the tower roof and the eclipse.
  */
 import { mkdir } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'

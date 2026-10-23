@@ -165,8 +165,8 @@ also Duplicate Content, den man danach wieder einfangen müsste. Ab etwa zwanzig
 
 Markup macht die Seite maschinenlesbar; **zitiert** wird sie wegen der Textform. Für neue Posts:
 
-- **Fakten-Sätze statt Marketing.** „Der öffentliche Demo-Start ist der 16. Oktober 2026, kostenlos
-  auf Steam" ist zitierbar. „Bald verfügbar" nicht. Datum, Zahl, Eigenname in _einem_ Satz.
+- **Fakten-Sätze statt Marketing.** „Der öffentliche Demo-Start ist der 15. November 2026, kostenlos
+  erhältlich" ist zitierbar. „Bald verfügbar" nicht. Datum, Zahl, Eigenname in _einem_ Satz.
 - **Definitionssatz oben.** Ein Retrieval-System sieht oft nur einen Chunk, also sollte der erste
   Satz ohne Kontext funktionieren („HoldStrong ist ein …").
 - **H2 als Frage.** „Warum kein Win-State?" wird als Passage zu einer Frage gematcht,
@@ -184,6 +184,6 @@ Markup macht die Seite maschinenlesbar; **zitiert** wird sie wegen der Textform.
   Sprachpaar außerhalb des Devlogs, und die hreflang-Logik trägt sie ohne Änderung.
 - **FAQ-Block auf `/holdstrong/`** mit `FAQPage`-JSON-LD. Googles FAQ-Rich-Results sind für die
   meisten Seiten abgeschaltet, für LLM-Extraktion ist das Format weiterhin ideal.
-- **`keyart.png` ist 1,0 MB** und das LCP-Element von `/holdstrong/`. Eine WebP-Variante
-  (~120–180 KB) für den Hero-`<img>` wäre ein echter Core-Web-Vitals-Gewinn; das PNG bliebe für
-  OG. `hs-hero-img` hat außerdem `alt=""` — als dekorativ verteidigbar, aber es ist das Keyart.
+- **`hs-hero-img` hat `alt=""`.** Als dekorativ ist das verteidigbar, aber es ist das Keyart und
+  das LCP-Element von `/holdstrong/`. Der Hero lädt inzwischen `keyart.webp` (~50 KB), und das PNG
+  bleibt als Master für OG.

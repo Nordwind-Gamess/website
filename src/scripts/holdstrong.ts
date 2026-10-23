@@ -28,13 +28,13 @@ type Els = {
 
 type SignupResult = { ok: true } | { ok: false; reason: 'unreachable' | 'rejected' };
 
-const DEMO_TARGET = new Date('2026-10-16T10:00:00Z').getTime();
+const DEMO_TARGET = new Date('2026-11-15T10:00:00Z').getTime();
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/;
 const REQUEST_TIMEOUT_MS = 15_000;
 
 // Set after deploying scripts/google-apps-script/playtest-signup.gs as a web app.
 const PLAYTEST_SIGNUP_ENDPOINT =
-	'https://script.google.com/macros/s/AKfycbw8hzeMnWs00hsAvczc_6sXYWIMyNmFNoN86Fl3cgRLPtYfy7J9iat5HlCbxwRdXGRK/exec';
+	'https://script.google.com/macros/s/AKfycby5SHCp_nJviyvE7lrIaBZeu5IbDX-siYDtw9-ZAHeHLdQeSiGUSNzUSQAqDEC6MtLY/exec';
 
 // Must match SHARED_TOKEN in scripts/google-apps-script/playtest-signup.gs.
 // Not a real secret (it ships in the public JS bundle) — it only filters out

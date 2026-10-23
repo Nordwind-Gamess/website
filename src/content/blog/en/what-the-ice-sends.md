@@ -12,6 +12,8 @@ Until a few weeks ago my honest answer to that was a list of names in my design 
 
 One thing I want to get out of the way right at the start: everything you see here is pure concept art that I drew to make my own work easier later on. None of it has been modelled in 3D or put into the game yet, and the free demo in October will not contain all four of them either.
 
+> **Update, 15 October 2026:** I am moving the demo back by thirty days. It now comes out on **15 November 2026**, and I explain why in [its own post](/blog/demo-moves-to-november/).
+
 ## A mere presence has no army
 
 What makes the Eternal Ice interesting as a threat is at the same time my biggest hurdle in enemy design: the ice has no king, no council, and no grim frost lord on a throne. There is nobody to negotiate with and nobody giving orders. The ice is not a people. It simply keeps advancing, and that is its only trait.
