@@ -18,7 +18,7 @@ Das hier ist dasselbe Spiel Mitte Oktober. Alles, was man braucht, ist da: die W
 
 Falsch war daran nichts, und alles hat seinen Zweck erfüllt. Aber jedes Element war zu einer anderen Zeit aus einem anderen Grund entstanden, und das sah man. Kreis, Panel, Balken und Kästen hatten weder eine gemeinsame Form noch eine gemeinsame Linie oder Farbe. Das Ergebnis war ein HUD, das nach Prototyp aussah, über einer Szene, die langsam anfing, nach Spiel auszusehen.
 
-<!-- TODO(Mathias): ein, zwei Sätze, warum es gerade Bleistift geworden ist. -->
+Ich liebe es mit Bleistift zu zeichnen. Als Kind habe ich meine Leidschaft zum Zeichnen mit dem Bleistift in meiner Hand entdeckt und bevorzuge ihn noch bis heute. Daher lag es nicht fern, diesen Look auch auf mein erstes Spiel zu übertragen.
 
 ## Eine Form für alles
 
@@ -52,7 +52,7 @@ Die Beschreibung eines Sterns öffnet sich jetzt in einem gezeichneten Rahmen mi
 Der nachtblaue Himmel von oben war nicht mein erster Versuch. Als ich die Zeichnungen in den Himmel geholt habe, habe ich sie zuerst wörtlich genommen. Die Rauten hatten eine weiße Papierfüllung, die Runen waren mit Graphit gezeichnet, und das Popup wurde zu einem weißen Blatt Papier mit dunkelgrauer Schrift. Es sollte aussehen wie ein Skizzenbuch, das über den Sternen liegt.
 
 Zwei Tage später habe ich das alles wieder herausgenommen.
-<!-- TODO(Mathias): warum? Mein Vorschlag, bitte bestätigen oder ersetzen: -->
+
 Ein weißes Blatt mitten in einem dunklen Himmel war schlicht lauter als alles andere auf dem Bildschirm, und die Sterne haben genau das verloren, was sie zu Sternen gemacht hat. Deshalb sind die Füllungen jetzt nachtblau, Linien und Schrift sind hell, und der Bleistift zeigt sich nur noch in den Strichen selbst. Im Nachhinein war die Papier-Fassung ein nützlicher Fehler, denn sie hat mir gezeigt, dass der Bleistift-Look in den Linien steckt und nicht im Hintergrund.
 
 ## Die Menüs ziehen nach
@@ -69,8 +69,7 @@ Nichts davon ändert, wie sich das Spiel spielt. Aber es ist das erste Mal, dass
 
 Ein gezeichnetes HUD über einer 3D-Welt, die vollkommen glatt aussieht, reißt eine seltsame Lücke auf. Deshalb habe ich dem Spiel in dieser Woche auch einen Toon-Shader gegeben. Praktisch zieht er überall dort eine dünne dunkle Linie, wo sich eine Fläche von der Kamera wegdreht. Dadurch bekommt jede Figur, jeder Felsen und jeder Baum einen Umriss, und die ganze Szene sieht ein wenig aus wie ein gezeichnetes Comic-Panel, ohne ihre 3D-Tiefe zu verlieren. Die Linie habe ich bewusst dünn gehalten, denn sie soll das Bild zusammenhalten und keinen Zeichentrickfilm daraus machen.
 
-Am selben Tag habe ich versucht, noch einen Schritt weiterzugehen, und den verschneiten Bäumen auch die flache Schattierung des Toon-Shaders gegeben. Das habe ich noch am selben Tag zurückgenommen, sodass die Bäume ihr eigenes Schneematerial behalten und nur die Outline bekommen wie alles andere.
-<!-- TODO(Mathias): ein Halbsatz, warum die flache Schattierung bei den Bäumen nicht funktioniert hat. -->
+Am selben Tag habe ich versucht, noch einen Schritt weiterzugehen, und den verschneiten Bäumen auch die flache Schattierung des Toon-Shaders gegeben. Das habe ich noch am selben Tag zurückgenommen, da die Bäume aus dem Design herausfielen und nicht mehr ins Bild passten. Somit behalten resultierend die Bäume ihr eigenes Schneematerial und erhalten die gleichen Outlines wie alles andere.
 
 Im selben Zug habe ich die Spielkamera auf fast die dreifache Höhe angehoben, sodass ihr jetzt deutlich mehr vom Schlachtfeld rund um den Turm seht. Damit diese größere Ansicht nicht leer wirkt, hat der Wald über hundert neue Bäume und ein paar zusätzliche Felsen bekommen, und die Schneeflocken sind größer geworden und fallen näher an der Kamera. All das seht ihr auf dem Bild ganz oben in diesem Beitrag.
 
