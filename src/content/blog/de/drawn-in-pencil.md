@@ -1,10 +1,10 @@
 ---
 title: HoldStrong greift zum Bleistift
 description: 'In einer Woche hat das ganze Spiel sein Gesicht gewechselt: ein HUD und Menüs, von Hand mit Bleistift gezeichnet, ein Sternenhimmel im gleichen Stil und eine dünne Toon-Outline um die 3D-Welt, die sie ein wenig wie einen gezeichneten Comic aussehen lässt. Dazu der Umweg, den ich unterwegs genommen habe, drei Bugs, die der neue Look mitgebracht hat, und was noch Platzhalter ist.'
-date: 2026-10-29
+date: 2026-10-23
 ---
 
-![HoldStrong im Work-in-Progress-Build, Ende Oktober 2026 — der Turm von Rimehold aus der neuen, höheren Kamera, jede Figur und jeder Baum mit einer dünnen dunklen Outline, rundherum am Bildrand das handgezeichnete Bleistift-HUD](/blog/drawn-in-pencil/hero.webp)
+![HoldStrong im Work-in-Progress-Build, Ende Oktober 2026 — der Turm von Rimehold aus der neuen, höheren Kamera im Schnee, umringt von Fackeln und mit einer roten Fallenzone daneben, Felsen und Bäume mit dünner dunkler Outline, am Bildrand das handgezeichnete Bleistift-HUD](/blog/drawn-in-pencil/hero.webp)
 
 Wenn ihr die Screenshots aus dem [Beitrag zum Demo-Termin](/de/blog/demo-moves-to-november/) gesehen habt, werdet ihr das Spiel auf dem Bild oben kaum wiedererkennen. Das liegt nicht daran, dass am Gameplay etwas Großes passiert wäre. Es liegt daran, dass zwischen dem 20. und dem 22. Oktober fast alles, was man beim Spielen ansieht, ein neues Gesicht bekommen hat. HUD und Menüs sind jetzt von Hand mit Bleistift gezeichnet, der Skilltree im Nachthimmel nutzt dieselben Zeichnungen, und die 3D-Welt selbst hat eine dünne Outline um jede Figur, jeden Felsen und jeden Baum.
 
@@ -18,13 +18,13 @@ Das hier ist dasselbe Spiel Mitte Oktober. Alles, was man braucht, ist da: die W
 
 Falsch war daran nichts, und alles hat seinen Zweck erfüllt. Aber jedes Element war zu einer anderen Zeit aus einem anderen Grund entstanden, und das sah man. Kreis, Panel, Balken und Kästen hatten weder eine gemeinsame Form noch eine gemeinsame Linie oder Farbe. Das Ergebnis war ein HUD, das nach Prototyp aussah, über einer Szene, die langsam anfing, nach Spiel auszusehen.
 
-Ich liebe es mit Bleistift zu zeichnen. Als Kind habe ich meine Leidschaft zum Zeichnen mit dem Bleistift in meiner Hand entdeckt und bevorzuge ihn noch bis heute. Daher lag es nicht fern, diesen Look auch auf mein erstes Spiel zu übertragen.
+Ich liebe es, mit Bleistift zu zeichnen. Als Kind habe ich meine Leidenschaft fürs Zeichnen mit einem Bleistift in der Hand entdeckt, und ich bevorzuge ihn bis heute. Daher lag es nicht fern, diesen Look auch auf mein erstes Spiel zu übertragen.
 
 ## Eine Form für alles
 
-![Nahaufnahmen des neuen Bleistift-HUDs im Work-in-Progress-Build, Ende Oktober 2026 — das Wikinger-Porträt in einer Raute mit der Runen-Währungstafel, die Rundenleiste aus Rauten und Punkten, der Lebensbalken des Turms mit Turmemblem und die drei Ability-Slots](/blog/drawn-in-pencil/hud-closeup.webp)
+![Der Bleistiftentwurf für das neue HUD, Oktober 2026 — auf weißem Grund das Wikinger-Porträt in einer Raute mit der Runen-Währungstafel, drei Ability-Slots darunter, oben eine Rundenleiste aus fünf nummerierten Rauten und Punkten und unten der rote Lebensbalken des Turms mit Turmemblem](/blog/drawn-in-pencil/raw-sketch.webp)
 
-Das neue HUD ist aus einer einzigen Form gebaut: einer Raute mit doppelter Bleistiftlinie. Als ich diese Form einmal hatte, konnte jedes andere Element aus ihr herauswachsen.
+Das neue HUD ist aus einer einzigen Form gebaut: einer Raute mit doppelter Bleistiftlinie. Als ich diese Form einmal hatte, konnte jedes andere Element aus ihr herauswachsen. Oben seht ihr meinen Entwurf dafür, so wie er gezeichnet wurde, bevor irgendetwas davon im Spiel war. Im Entwurf hängen die Slots noch am linken Rand untereinander, im Spiel sitzen sie inzwischen unten links nebeneinander.
 
 - **Das Porträt.** Oben links sitzt jetzt der Helm des Einheri, des namenlosen Wikingers, den du spielst, in einer Raute. Daneben hängt eine kleine gezeichnete Tafel mit deiner Währung, und die Währung hat zum ersten Mal ein Symbol: die Rune ᚢ, Uruz. Wenn du einen Gegner tötest, steigt die Belohnung jetzt als „+1 ᚢ“ in kleiner schwarzer Schrift auf und konkurriert dadurch nicht mehr mit den Schadenszahlen.
 - **Die Rundenleiste.** Der alte Text „Runde 5/5, Tag 7“ ist weg. Stattdessen läuft oben eine Reihe aus Rauten und Punkten über den Bildschirm. Jede Raute ist der Beginn einer Runde, der erste Punkt füllt sich bei der Hälfte der Welle und der zweite, wenn die Runde geschafft ist. Kommende Runden sind blasse Umrisse, die aktuelle pulsiert leicht, und abgeschlossene werden zu Graphit.
@@ -35,7 +35,7 @@ Dieses letzte Detail mag ich sehr: Weil sich nur das Innere bewegt, fühlt sich 
 
 ## Der Himmel bekommt denselben Bleistift
 
-![Der Skilltree im Nachthimmel im Work-in-Progress-Build, Ende Oktober 2026 — Sterne als Bleistift-Rauten, verbunden durch leicht gewellte Bleistiftlinien mit kleinen Rautenenden, und ein handgezeichneter Popup-Rahmen um die Beschreibung eines Sterns](/blog/drawn-in-pencil/star-sky.webp)
+![Der Skilltree im Nachthimmel im Work-in-Progress-Build, Ende Oktober 2026 — Sterne als Bleistift-Rauten in Gold, Grau und Rot, verbunden durch Bleistiftlinien, oben links die drei Ressourcen-Zähler, oben rechts die Maus-Hinweise und ein handgezeichneter Popup-Rahmen mit der Beschreibung von Thors Geschenk](/blog/drawn-in-pencil/star-sky.webp)
 
 Wenn du in HoldStrong ein Upgrade kaufst, kippt die Kamera vom Schlachtfeld nach oben in den Nachthimmel, wo jedes Upgrade ein Stern ist. Bis letzte Woche waren diese Sterne leuchtende Runenkreise, verbunden durch dünne gerade Linien. Diese Fassung könnt ihr noch im [Demo-Beitrag](/de/blog/demo-moves-to-november/) sehen.
 
@@ -47,17 +47,13 @@ Die Beschreibung eines Sterns öffnet sich jetzt in einem gezeichneten Rahmen mi
 
 ## Ein Umweg über Papier
 
-![Der Skilltree im Work-in-Progress-Build vom 21. Oktober 2026 in der Papier-Fassung, die ich später verworfen habe — Sterne als Rauten mit weißer Papierfüllung und Graphit-Runen, dazu ein weißes Popup mit dunkelgrauer Schrift](/blog/drawn-in-pencil/paper-sky.webp)
-
 Der nachtblaue Himmel von oben war nicht mein erster Versuch. Als ich die Zeichnungen in den Himmel geholt habe, habe ich sie zuerst wörtlich genommen. Die Rauten hatten eine weiße Papierfüllung, die Runen waren mit Graphit gezeichnet, und das Popup wurde zu einem weißen Blatt Papier mit dunkelgrauer Schrift. Es sollte aussehen wie ein Skizzenbuch, das über den Sternen liegt.
 
-Zwei Tage später habe ich das alles wieder herausgenommen.
-
-Ein weißes Blatt mitten in einem dunklen Himmel war schlicht lauter als alles andere auf dem Bildschirm, und die Sterne haben genau das verloren, was sie zu Sternen gemacht hat. Deshalb sind die Füllungen jetzt nachtblau, Linien und Schrift sind hell, und der Bleistift zeigt sich nur noch in den Strichen selbst. Im Nachhinein war die Papier-Fassung ein nützlicher Fehler, denn sie hat mir gezeigt, dass der Bleistift-Look in den Linien steckt und nicht im Hintergrund.
+Von dieser Fassung gibt es keinen Screenshot, denn zwei Tage später habe ich das alles wieder herausgenommen. Ein weißes Blatt mitten in einem dunklen Himmel war schlicht lauter als alles andere auf dem Bildschirm, und die Sterne haben genau das verloren, was sie zu Sternen gemacht hat. Deshalb sind die Füllungen jetzt nachtblau, Linien und Schrift sind hell, und der Bleistift zeigt sich nur noch in den Strichen selbst. Im Nachhinein war die Papier-Fassung ein nützlicher Fehler, denn sie hat mir gezeigt, dass der Bleistift-Look in den Linien steckt und nicht im Hintergrund.
 
 ## Die Menüs ziehen nach
 
-![Das Einstellungsmenü im Work-in-Progress-Build, Ende Oktober 2026 — ein gezeichneter Rahmen mit Eckrauten auf nachtblauem Grund, handgezeichnete Buttons mit spitzen Enden und ein Bleistift-Trennstrich unter dem Titel](/blog/drawn-in-pencil/menus.webp)
+![Das Einstellungsmenü im Work-in-Progress-Build, Ende Oktober 2026 — ein gezeichneter Rahmen mit Eckrauten auf nachtblauem Grund über dem Spiel, Reiter mit einer kleinen Raute unter dem gewählten, Pfeil-Buttons und unten handgezeichnete Buttons mit spitzen Enden](/blog/drawn-in-pencil/menus.webp)
 
 Sobald HUD und Himmel gezeichnet waren, wirkten die Menüs fehl am Platz, also sind sie nachgezogen. Die Einstellungen, der Pausebildschirm, das Ende eines Runs und der Kriegsrat, also die Übersicht, die du mit Tab öffnest, teilen sich jetzt die Himmelsfarben und denselben gezeichneten Rahmen. Jeder Button ist eine handgezeichnete Form mit spitzen Enden, die beim Drüberfahren ihre Zeichnung wechselt und beim Klicken ein kleines Stück einsinkt. Gerade Trennlinien sind zu Bleistiftstrichen mit einer Raute an jedem Ende geworden, und ein geöffnetes Dropdown markiert deine Auswahl mit einer kleinen Raute aus der Rundenleiste statt mit einem Häkchen.
 
@@ -65,17 +61,15 @@ Nichts davon ändert, wie sich das Spiel spielt. Aber es ist das erste Mal, dass
 
 ## Die Welt bekommt eine Outline
 
-![Dieselbe Ansicht des Schlachtfelds im Work-in-Progress-Build, Oktober 2026, nebeneinander — links ohne Outline, rechts mit einer dünnen dunklen Linie um Turm, Figuren, Felsen und Bäume](/blog/drawn-in-pencil/outline-compare.webp)
+![Das Schlachtfeld im Work-in-Progress-Build, Ende Oktober 2026, ohne die Toon-Outline — der Turm mit seinen Fackeln im Schnee, Felsen und Bäume ohne Umrisslinie](/blog/drawn-in-pencil/outline-compare.webp)
 
-Ein gezeichnetes HUD über einer 3D-Welt, die vollkommen glatt aussieht, reißt eine seltsame Lücke auf. Deshalb habe ich dem Spiel in dieser Woche auch einen Toon-Shader gegeben. Praktisch zieht er überall dort eine dünne dunkle Linie, wo sich eine Fläche von der Kamera wegdreht. Dadurch bekommt jede Figur, jeder Felsen und jeder Baum einen Umriss, und die ganze Szene sieht ein wenig aus wie ein gezeichnetes Comic-Panel, ohne ihre 3D-Tiefe zu verlieren. Die Linie habe ich bewusst dünn gehalten, denn sie soll das Bild zusammenhalten und keinen Zeichentrickfilm daraus machen.
+Ein gezeichnetes HUD über einer 3D-Welt, die vollkommen glatt aussieht, reißt eine seltsame Lücke auf. Deshalb habe ich dem Spiel in dieser Woche auch einen Toon-Shader gegeben. Praktisch zieht er überall dort eine dünne dunkle Linie, wo sich eine Fläche von der Kamera wegdreht. Oben seht ihr das Schlachtfeld ohne diese Linie, ganz oben im Beitrag mit ihr. Dadurch bekommt jede Figur, jeder Felsen und jeder Baum einen Umriss, und die ganze Szene sieht ein wenig aus wie ein gezeichnetes Comic-Panel, ohne ihre 3D-Tiefe zu verlieren. Die Linie habe ich bewusst dünn gehalten, denn sie soll das Bild zusammenhalten und keinen Zeichentrickfilm daraus machen.
 
-Am selben Tag habe ich versucht, noch einen Schritt weiterzugehen, und den verschneiten Bäumen auch die flache Schattierung des Toon-Shaders gegeben. Das habe ich noch am selben Tag zurückgenommen, da die Bäume aus dem Design herausfielen und nicht mehr ins Bild passten. Somit behalten resultierend die Bäume ihr eigenes Schneematerial und erhalten die gleichen Outlines wie alles andere.
+Am selben Tag habe ich versucht, noch einen Schritt weiterzugehen, und den verschneiten Bäumen auch die flache Schattierung des Toon-Shaders gegeben. Das habe ich noch am selben Tag zurückgenommen, weil die Bäume damit aus dem Design herausfielen und nicht mehr ins Bild passten. Deshalb behalten die Bäume ihr eigenes Schneematerial und bekommen dieselbe Outline wie alles andere.
 
 Im selben Zug habe ich die Spielkamera auf fast die dreifache Höhe angehoben, sodass ihr jetzt deutlich mehr vom Schlachtfeld rund um den Turm seht. Damit diese größere Ansicht nicht leer wirkt, hat der Wald über hundert neue Bäume und ein paar zusätzliche Felsen bekommen, und die Schneeflocken sind größer geworden und fallen näher an der Kamera. All das seht ihr auf dem Bild ganz oben in diesem Beitrag.
 
 ## Bleistift in die Engine bringen
-
-![Eine der originalen Bleistiftzeichnungen für das HUD aus dem Work-in-Progress-Material, Oktober 2026 — ein Ability-Slot mit seiner doppelten Umrisslinie, gezeichnet in doppelter Größe gegenüber dem Spiel](/blog/drawn-in-pencil/raw-sketch.webp)
 
 Die Zeichnungen entstehen in Procreate auf dem iPad. Ich nutze es, weil ich dort über die Ebenen von Anfang an Umriss, Füllung und Hintergrund getrennt halten kann, und genau diese Teile braucht das Spiel einzeln. Danach wandern sie in Unity, die Engine, in der HoldStrong entsteht. Damit ein Bleistiftstrich auf diesem Weg nicht matschig wird, waren drei kleine Entscheidungen nötig.
 

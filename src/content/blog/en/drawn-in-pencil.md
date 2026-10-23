@@ -1,10 +1,10 @@
 ---
 title: HoldStrong picks up a pencil
 description: 'In one week the whole game changed its look: a HUD and menus drawn by hand in pencil, a star sky in the same style, and a thin toon outline around the 3D world that makes it look a little like a drawn comic. Plus the detour I took on the way, three bugs the new look brought with it, and what is still a placeholder.'
-date: 2026-10-29
+date: 2026-10-23
 ---
 
-![HoldStrong in the work-in-progress build, late October 2026 — the tower of Rimehold from the new, higher camera, every figure and tree with a thin dark outline, and the hand-drawn pencil HUD around the edges of the screen](/blog/drawn-in-pencil/hero.webp)
+![HoldStrong in the work-in-progress build, late October 2026 — the tower of Rimehold from the new, higher camera in the snow, ringed by torches with a red trap zone beside it, rocks and trees with a thin dark outline, and the hand-drawn pencil HUD around the edges of the screen](/blog/drawn-in-pencil/hero.webp)
 
 If you saw the screenshots in the [post about the demo date](/blog/demo-moves-to-november/), you will hardly recognise the game in the picture above. That is not because something big happened to the gameplay. It is because between 20 and 22 October almost everything you look at while playing got a new face. The HUD and the menus are now drawn by hand in pencil, the skill tree in the night sky uses the same drawings, and the 3D world itself has a thin outline around every figure, every rock and every tree.
 
@@ -18,13 +18,13 @@ This is the same game in mid-October. Everything you need is there: the currency
 
 None of it was wrong, and all of it did its job. But every element had been made at a different time for a different reason, and you could see that. The circle, the panel, the bars and the boxes did not share a shape, a line or a colour. The result was a HUD that looked like a prototype, sitting on top of a scene that was slowly starting to look like a game.
 
-<!-- TODO(Mathias): ein, zwei Sätze, warum es gerade Bleistift geworden ist. -->
+I love drawing with a pencil. As a child I discovered my passion for drawing with a pencil in my hand, and I still prefer it today. So it was not much of a leap to carry that look over into my first game.
 
 ## One shape for everything
 
-![Close-ups of the new pencil HUD in the work-in-progress build, late October 2026 — the Viking portrait in a diamond with the rune currency plaque, the round track of diamonds and dots, the tower health bar with the tower emblem, and the three ability slots](/blog/drawn-in-pencil/hud-closeup.webp)
+![The pencil draft for the new HUD, October 2026 — on white, the Viking portrait in a diamond with the rune currency plaque, three ability slots below it, a round track of five numbered diamonds and dots at the top, and the tower's red health bar with the tower emblem at the bottom](/blog/drawn-in-pencil/raw-sketch.webp)
 
-The new HUD is built from one single shape: a diamond with a double pencil line. Once I had that shape, every other element could grow out of it.
+The new HUD is built from one single shape: a diamond with a double pencil line. Once I had that shape, every other element could grow out of it. Above you can see my draft for it, as I drew it before any of it was in the game. In the draft the slots still hang down the left edge, while in the game they now sit side by side at the bottom left.
 
 - **The portrait.** At the top left there is now the helmet of the Einheri, the nameless Viking you play, inside a diamond. Next to it hangs a small drawn plaque with your currency, and the currency has a symbol for the first time: the rune ᚢ, Uruz. When you kill an enemy, the reward now floats up as "+1 ᚢ" in small black letters, so it no longer competes with the damage numbers.
 - **The round track.** The old text "Round 5/5, Day 7" is gone. In its place a row of diamonds and dots runs across the top of the screen. Every diamond is the start of a round, the first dot fills at half of the wave, and the second when the round is done. Rounds still to come are faint outlines, the current one pulses gently, and finished ones turn to graphite.
@@ -35,7 +35,7 @@ I like that last detail a great deal: because only the inside moves, the frame f
 
 ## The sky gets the same pencil
 
-![The skill tree in the night sky in the work-in-progress build, late October 2026 — stars drawn as pencil diamonds, connected by slightly wavy pencil lines with small diamond caps, and a hand-drawn popup frame around the description of one star](/blog/drawn-in-pencil/star-sky.webp)
+![The skill tree in the night sky in the work-in-progress build, late October 2026 — stars drawn as pencil diamonds in gold, grey and red, joined by pencil lines, the three resource counters at the top left, the mouse hints at the top right and a hand-drawn popup frame with the description of Thor's Gift](/blog/drawn-in-pencil/star-sky.webp)
 
 When you buy an upgrade in HoldStrong, the camera tilts up from the battlefield into the night sky, where every upgrade is a star. Until last week those stars were glowing rune circles joined by thin straight lines. You can still see that version in the [demo post](/blog/demo-moves-to-november/).
 
@@ -47,17 +47,13 @@ The description of a star now opens in a drawn frame with corner diamonds and a 
 
 ## A detour over paper
 
-![The skill tree in the work-in-progress build of 21 October 2026, in the paper version I later dropped — stars as diamonds with a white paper fill and graphite runes, and a white popup with dark grey text](/blog/drawn-in-pencil/paper-sky.webp)
-
 The night-blue sky you saw above was not my first attempt. When I moved the drawings into the sky, I first took them literally. The diamonds had a white paper fill, the runes were drawn in graphite, and the popup turned into a sheet of white paper with dark grey text. It was supposed to look like a sketchbook lying over the stars.
 
-Two days later I took all of that out again.
-<!-- TODO(Mathias): warum? Mein Vorschlag, bitte bestätigen oder ersetzen: -->
-A white sheet in the middle of a dark sky simply shouted louder than anything else on the screen, and the stars lost exactly what made them stars. So now the fills are night blue, the lines and the text are light, and the pencil only shows in the strokes themselves. Looking back, the paper version was a useful mistake, because it showed me that the pencil look lives in the lines and not in the background.
+There is no screenshot of that version, because two days later I took all of it out again. A white sheet in the middle of a dark sky simply shouted louder than anything else on the screen, and the stars lost exactly what made them stars. So now the fills are night blue, the lines and the text are light, and the pencil only shows in the strokes themselves. Looking back, the paper version was a useful mistake, because it showed me that the pencil look lives in the lines and not in the background.
 
 ## The menus follow
 
-![The settings menu in the work-in-progress build, late October 2026 — a drawn frame with corner diamonds on a night-blue background, hand-drawn buttons with pointed ends, and a pencil divider under the title](/blog/drawn-in-pencil/menus.webp)
+![The settings menu in the work-in-progress build, late October 2026 — a drawn frame with corner diamonds on a night-blue background over the game, tabs with a small diamond under the selected one, arrow buttons, and hand-drawn buttons with pointed ends at the bottom](/blog/drawn-in-pencil/menus.webp)
 
 Once the HUD and the sky were drawn, the menus looked out of place, so they followed. The settings, the pause screen, the end of a run and the War Council, the overview you open with Tab, now all share the sky colours and the same drawn frame. Every button is a hand-drawn shape with pointed ends that changes its drawing when you hover over it and sinks in a little when you click. Straight dividing lines became pencil strokes with a diamond at each end, and an opened dropdown marks your choice with a small diamond from the round track instead of a check mark.
 
@@ -65,18 +61,15 @@ None of this changes how the game plays. But it is the first time that every scr
 
 ## The world gets an outline
 
-![The same view of the battlefield in the work-in-progress build, October 2026, side by side — on the left without the outline, on the right with a thin dark line around the tower, the figures, the rocks and the trees](/blog/drawn-in-pencil/outline-compare.webp)
+![The battlefield in the work-in-progress build, late October 2026, without the toon outline — the tower with its torches in the snow, rocks and trees without an outline](/blog/drawn-in-pencil/outline-compare.webp)
 
-A drawn HUD on top of a 3D world that looks perfectly smooth creates a strange gap. That is why I also added a toon shader to the game this week. In practice, it draws a thin dark line wherever a surface turns away from the camera. So every figure, every rock and every tree now gets an outline, and the whole scene looks a little like a drawn comic panel without losing its 3D depth. I deliberately kept the line thin, because it should hold the picture together and not turn it into a cartoon.
+A drawn HUD on top of a 3D world that looks perfectly smooth creates a strange gap. That is why I also added a toon shader to the game this week. In practice, it draws a thin dark line wherever a surface turns away from the camera. Above you can see the battlefield without that line, and at the very top of this post with it. So every figure, every rock and every tree now gets an outline, and the whole scene looks a little like a drawn comic panel without losing its 3D depth. I deliberately kept the line thin, because it should hold the picture together and not turn it into a cartoon.
 
-I tried to go one step further on the same day and gave the snow-covered trees the toon shader's flat shading as well. I took that back the same day, so the trees keep their own snow material and only get the outline like everything else.
-<!-- TODO(Mathias): ein Halbsatz, warum die flache Schattierung bei den Bäumen nicht funktioniert hat. -->
+I tried to go one step further on the same day and gave the snow-covered trees the toon shader's flat shading as well. I took that back the same day, because the trees fell out of the design and no longer fit the picture. So the trees keep their own snow material and get the same outline as everything else.
 
 In the same go I moved the gameplay camera up to almost three times its old height, so you now see much more of the battlefield around the tower. To keep that larger view from looking empty, the forest got more than a hundred new trees, a few more rocks, and the snowflakes became bigger and fall closer to the camera. You can see all of that in the picture at the top of this post.
 
 ## Getting pencil into the engine
-
-![One of the original pencil drawings for the HUD in the work-in-progress art, October 2026 — an ability slot with its double outline, drawn at twice the size it appears in the game](/blog/drawn-in-pencil/raw-sketch.webp)
 
 The drawings start in Procreate on the iPad. I use it because its layers let me keep outline, fill and background apart from the start, and the game needs exactly those as separate pieces. Then they go into Unity, the engine HoldStrong is built in. Getting a pencil line from one to the other without it turning muddy took three small decisions.
 
