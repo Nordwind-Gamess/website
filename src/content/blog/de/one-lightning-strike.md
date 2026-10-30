@@ -26,7 +26,7 @@ Insgesamt schlägt der Blitz etwa zweieinhalb Sekunden nach dem Tastendruck ein,
 
 Der Blitz selbst ist eine gezackte Linie mit Verästelungen. Ich baue ihn für jeden Einschlag neu: Ich nehme eine gerade Linie, schiebe ihren Mittelpunkt zur Seite und mache dann dasselbe mit beiden Hälften, immer wieder. Das ist ein alter und einfacher Trick, und er ergibt genau die Form, die das Auge von einem Blitz erwartet.
 
-Er erscheint nicht auf einmal. Zuerst läuft eine dünne Vorentladung vom Himmel zum Boden. Erst wenn sie unten ankommt, flammt der Hauptkanal auf, und mit jedem Rückschlag flammt er noch einmal auf. In der ersten Version brauchte die Vorentladung 90 Millisekunden. Später, mit echten Sounds, brauchte sie genau so lange wie das Zischen am Anfang des Blitz-Sounds.
+Er erscheint nicht auf einmal. Zuerst läuft eine dünne Vorentladung vom Himmel zum Boden. Erst wenn sie unten ankommt, flammt der Hauptkanal auf, und mit jedem Rückschlag flammt er noch einmal auf. In der ersten Version brauchte die Vorentladung 90 Millisekunden. Später, mit den finalen Sounds, brauchte sie genau so lange wie das Zischen am Anfang des Blitz-Sounds.
 
 Damit er zum Look des Spiels passt, hat der Blitz einen weißen Kern, ein blaues Leuchten und eine schwarze Tusche-Outline, wie seit dem Bleistift-Update alles in der Welt. Die Outline hat meinen ersten kleinen Bug verursacht: Wo der Blitz in sich zurückknickte oder ein Ast auf ihn traf, verdeckte die Outline des einen Stücks den weißen Kern des anderen, und der Blitz sah zerschnitten aus. Jetzt werden alle Outlines vor allen Kernen gezeichnet, also liegt ein Kern immer oben. Außerdem wird der Blitz zum Boden hin dünner, bis auf 30 % seiner Breite am Einschlagspunkt. Dieses Detail mag ich sehr, denn dadurch sieht er aus, als käme er von irgendwo weit oben.
 
@@ -40,7 +40,7 @@ Der Moment des Einschlags muss sich wie ein Schlag anfühlen. Dafür passieren d
 - **Ein Impact-Frame.** In diesem Moment kippt das Bild ins Negativ und dann in reines Schwarz-Weiß. Die Technik kommt aus dem Anime, wo die härtesten Treffer oft ein einzelnes solches Bild bekommen. Sie passt sehr gut zum gezeichneten Look von HoldStrong, und ich wollte sie schon lange einmal einsetzen.
 - **Ein Kamera-Kick.** Die Kamera springt hoch und heran, das Sichtfeld zieht sich zusammen, und beides federt zurück. Dazu kommt ein kurzer Ausbruch von Farbsäumen an den Bildrändern.
 
-Ich baue HoldStrong in Unity mit der Universal Render Pipeline. Für das Kamerawackeln und das Abspielen von Sounds nutze ich Feel, ein Toolkit von More Mountains, das genau für diese Art von „Game Feel“-Arbeit gemacht ist. Aus Feel kamen auch die ersten Platzhalter-Sounds des Blitzes, dazu gleich mehr.
+Ich baue HoldStrong in Unity mit der Universal Render Pipeline. Für das Kamerawackeln nutze ich Feel, ein Toolkit von More Mountains, das genau für diese Art von „Game Feel“-Arbeit gemacht ist.
 
 ## Der Boden
 
@@ -57,7 +57,7 @@ Ein Blitz, der in Schnee einschlägt, sollte etwas hinterlassen. Der Boden ist d
 
 ## Im Takt einer Donneraufnahme
 
-In den ersten zwei Tagen hatte der Blitz Platzhalter-Sounds aus Feel in fünf Ebenen: ein fernes Grollen beim ersten Vorblitz, ein Knistern, wenn die Vorentladung den Himmel verlässt, und beim Einschlag ein scharfes Krachen, ein tiefer Schlag und ein langes Donnerrollen. Das klang in Ordnung, aber der Ton folgte dem Bild. Am 25. Oktober habe ich das umgedreht. Jetzt nutze ich zwei Donneraufnahmen und drei Blitz-Sounds, und der Donner entscheidet, wann etwas passiert.
+In den ersten zwei Tagen hatte der Blitz Platzhalter-Sounds in fünf Ebenen: ein fernes Grollen beim ersten Vorblitz, ein Knistern, wenn die Vorentladung den Himmel verlässt, und beim Einschlag ein scharfes Krachen, ein tiefer Schlag und ein langes Donnerrollen. Das klang in Ordnung, aber der Ton folgte dem Bild. Am 25. Oktober habe ich das umgedreht. Jetzt nutze ich zwei Donneraufnahmen und drei Blitz-Sounds, und der Donner entscheidet, wann etwas passiert.
 
 ![Der Ablauf des Blitzschlags über der Wellenform der Donneraufnahme, gemessen Ende Oktober 2026 — leises Grollen bei 0,62, 0,75 und 0,83 Sekunden wird zu Vorblitz 1, ein Grollen bei 1,93 Sekunden zu Vorblitz 2, der laute Donnerschlag bei 2,48 Sekunden ist der Einschlag, die Rückschläge liegen auf dem zweiten Schlag und dem Anschwellen danach](/blog/one-lightning-strike/timeline-de.svg)
 
@@ -71,7 +71,7 @@ Die Blitz-Sounds sind so eingeplant, dass auch ihr Treffer auf dem Einschlag lan
 
 Nicht alles, was ich gebaut habe, ist geblieben. Zwei Dinge sind wieder rausgeflogen, beide am 24. Oktober.
 
-**God Rays.** Meine erste Idee waren Lichtstrahlen, die durch Lücken in den Wolken in einen Sturmdunst fallen, und jeder Blitz sollte diese Strahlen kurz in die Luft zeichnen. Ich habe einen Dunst über dem Ziel gebaut und eine Wolkentextur mit scharfen Lücken, durch die die Sonne scheint. Nach einem zweiten Anlauf, die Strahlen wirklich sichtbar zu machen, habe ich Dunst, Wolkentextur und Vorschau-Werkzeug noch am selben Tag wieder entfernt und die Arbeit in den Blitz selbst gesteckt.
+**God Rays.** Meine erste Idee waren Lichtstrahlen, die durch Lücken in den Wolken in einen Sturmdunst fallen, und jeder Blitz sollte diese Strahlen kurz in die Luft zeichnen. Ich habe einen Dunst über dem Ziel gebaut und eine Wolkentextur mit scharfen Lücken, durch die die Sonne scheint. Nach einem zweiten Anlauf, die Strahlen wirklich sichtbar zu machen, habe ich Dunst, Wolkentextur und Vorschau-Werkzeug noch am selben Tag wieder entfernt. Weiche, realistische Lichtstrahlen haben einfach nicht zum gezeichneten Look des Spiels gepasst, also habe ich die Arbeit stattdessen in den Blitz selbst gesteckt.
 
 **Glare-Flächen.** Der erste Blitz hatte am Einschlagspunkt ein Blenden und auf dem Boden ein Leuchten, beides als flache Flächen mit weichem Rand. In einem realistischen Spiel funktioniert das. In HoldStrong mit seinem Toon-Look und den Tusche-Outlines wirkten sie wie harte weiße Kleckse. Jetzt übernimmt ein Punktlicht diese Aufgabe, und es beleuchtet den Schnee um den Wikinger, statt ihn zu verdecken.
 

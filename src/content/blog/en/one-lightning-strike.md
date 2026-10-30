@@ -26,7 +26,7 @@ All in all, the strike lands about two and a half seconds after you press the ke
 
 The bolt itself is a jagged line with branches. I build it fresh for every strike by taking a straight line, pushing its midpoint sideways, and then doing the same for both halves, again and again. That is an old and simple trick, and it gives exactly the shape your eye expects from lightning.
 
-It does not appear all at once. First a thin leader runs down from the sky to the ground. Only when it arrives does the main stroke flare up, and it flares again with every return stroke. In the first version the leader took 90 milliseconds. Later, once I had real sounds, it took exactly as long as the sizzle at the start of the bolt sound.
+It does not appear all at once. First a thin leader runs down from the sky to the ground. Only when it arrives does the main stroke flare up, and it flares again with every return stroke. In the first version the leader took 90 milliseconds. Later, once I had the final sounds, it took exactly as long as the sizzle at the start of the bolt sound.
 
 To fit the game's look, the bolt has a white core, a blue glow and a black ink outline, like everything else in the world since the pencil update. The outline caused my first small bug: where the bolt folded back on itself or a branch met it, the outline of one piece covered the white core of another, and the bolt looked cut into pieces. Now every outline is drawn before every core, so a core is always on top. The bolt also gets thinner towards the ground, down to 30 % of its width at the point where it hits. I like that detail a lot, because it makes the bolt look like it is coming from somewhere far above.
 
@@ -40,7 +40,7 @@ The moment of the hit has to feel like a hit. Three things happen at once.
 - **An impact frame.** For that moment the picture flips to a negative and then to pure black and white ink. That is a technique from anime, where the hardest hits often get a single frame like this. It fits the drawn look of HoldStrong very well, and I had wanted to use it for a long time.
 - **A camera kick.** The camera jumps up and in, the field of view punches in, and both spring back. On top of that comes a short burst of colour fringing at the edges of the picture.
 
-I build HoldStrong in Unity with its Universal Render Pipeline. For the camera shake and for playing sounds I use Feel, a toolkit by More Mountains made for exactly this kind of "game feel" work. Feel also supplied the first placeholder sounds of the strike, which I will come back to.
+I build HoldStrong in Unity with its Universal Render Pipeline. For the camera shake I use Feel, a toolkit by More Mountains made for exactly this kind of "game feel" work.
 
 ## The ground
 
@@ -57,7 +57,7 @@ A bolt that hits snow should leave something behind. The ground part is built in
 
 ## Timing it to a thunder recording
 
-For the first two days the strike had placeholder sounds from Feel in five layers: a distant rumble with the first pre-flash, a crackle when the leader leaves the sky, and at the strike a sharp crack, a low boom and a long roll of thunder. It sounded fine, but the sound followed the picture. On 25 October I turned that around. I now use two thunder recordings and three bolt sounds, and the thunder decides when things happen.
+For the first two days the strike had placeholder sounds in five layers: a distant rumble with the first pre-flash, a crackle when the leader leaves the sky, and at the strike a sharp crack, a low boom and a long roll of thunder. It sounded fine, but the sound followed the picture. On 25 October I turned that around. I now use two thunder recordings and three bolt sounds, and the thunder decides when things happen.
 
 ![The strike timeline over the waveform of the thunder recording, measured late October 2026 — quiet rumbles at 0.62, 0.75 and 0.83 seconds become pre-flash 1, a rumble at 1.93 seconds becomes pre-flash 2, the loud clap at 2.48 seconds is the strike, with return strokes at the second clap and the swell after it](/blog/one-lightning-strike/timeline-en.svg)
 
@@ -71,7 +71,7 @@ The bolt sounds are scheduled so that their hit lands on the strike as well. The
 
 Not everything I built stayed in. Two things went out again, both on 24 October.
 
-**God rays.** My first idea was shafts of light falling through gaps in the clouds into a storm haze, with every flash briefly drawing those shafts into the air. I built a haze above the target and a cloud texture with sharp gaps for the sun to shine through. After a second attempt to make the shafts actually visible, I took the haze, the cloud texture and the preview tool out again that same day and put the work into the bolt itself.
+**God rays.** My first idea was shafts of light falling through gaps in the clouds into a storm haze, with every flash briefly drawing those shafts into the air. I built a haze above the target and a cloud texture with sharp gaps for the sun to shine through. After a second attempt to make the shafts actually visible, I took the haze, the cloud texture and the preview tool out again that same day. Soft, realistic shafts of light simply did not fit the drawn look of the game, so I put the work into the bolt itself instead.
 
 **Glare quads.** The first bolt had a glare at its point of impact and a glow on the ground, both drawn as flat soft-edged shapes. In a realistic game that works. In HoldStrong, with its toon look and ink outlines, they read as hard white blobs. Now a point light does that job, and it lights the snow around the Viking instead of covering it.
 

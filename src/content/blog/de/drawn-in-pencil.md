@@ -94,7 +94,7 @@ Ein neuer Look kommt selten allein, und diese drei haben auf mich gewartet.
 Damit dieser Beitrag nicht mehr verspricht, als er zeigt, hier der Stand dessen, was heute noch vorläufig ist:
 
 - **Die Maus-Icons im Himmel.** Die Hinweise „Ziehen zum Verschieben“ und „Scrollen zum Zoomen“ nutzen zwei schnell gemachte Icons im Bleistift-Stil, bis handgezeichnete sie ersetzen.
-- **Das „Unbekannte Geschenk“.** Thor und Týr haben im Baum je einen leeren Platz für ein Geschenk, das es noch nicht gibt.
+- **Das „Unbekannte Geschenk“.** Thor und Týr haben im Baum je einen leeren Platz für ein Geschenk, das es noch nicht gibt. Nachtrag: Thors Platz ist inzwischen mit [Mjölnirs Fall, seinem Blitzschlag](/de/blog/one-lightning-strike/) besetzt.
 - **Icons für die Sterne.** Im Moment zeigen die meisten Sterne nur eine Rune. Das sieht gut aus, aber man muss einen Stern öffnen, um zu wissen, was er tut. Deshalb werden die Sterne im Himmel sehr wahrscheinlich ebenfalls kleine Icons bekommen, damit der Baum auf einen Blick verständlicher wird.
 - **Die Werte.** Farben, Größen und Abstände sind ein erster Wurf, und einige davon werden sich ändern, sobald mehr Leute damit gespielt haben.
 
