@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, getImage } from 'astro:assets';
 import Analytics from '../components/Analytics.astro';
 import Seo from '../components/Seo.astro';
 import { DISCORD_INVITE } from '../lib/social';
@@ -13,8 +13,15 @@ import gameplay from '../assets/gameplay/gameplay.png';
 import godsLoki from '../assets/gameplay/gods_Loki.png';
 import godsThor from '../assets/gameplay/gods_Thor.png';
 import godsTyr from '../assets/gameplay/gods_Tyr.png';
+import mjolnirsFallBurn from '../assets/gameplay/mjolnirs-fall-burn.webp';
+import mjolnirsFallGround from '../assets/gameplay/mjolnirs-fall-ground.webp';
+import mjolnirsFallImpact from '../assets/gameplay/mjolnirs-fall-impact.webp';
+import mjolnirsFallSequence from '../assets/gameplay/mjolnirs-fall-sequence.webp';
 import rewardSelection from '../assets/gameplay/rewardSelection.png';
 import skillTree from '../assets/gameplay/skillTree.png';
+import strikeBeforeImpact from '../assets/one-lightning-strike/Full_Effect/07Lightning_incoming.png';
+import strikeBlowout from '../assets/one-lightning-strike/Full_Effect/11Lightning_Distortion.png';
+import strikeBurnFigure from '../assets/one-lightning-strike/Full_Effect/12Lightning_Impact.png';
 
 const site = Astro.site!;
 
@@ -24,6 +31,8 @@ const site = Astro.site!;
 // undated screenshot reads as a claim about today.
 type GalleryItem = {
 	image: ImageMetadata;
+	/** Animated WebP shown instead of `image`, unless the visitor asked for reduced motion. */
+	animation?: ImageMetadata;
 	name: string;
 	epithet: string;
 	alt: string;
@@ -34,9 +43,43 @@ type GalleryItem = {
 };
 
 const WIP_OCT_2026 = 'Work in progress · October 2026';
+const WIP_NOV_2026 = 'Work in progress · November 2026';
 
-// Screenshots first, as the newest material: the fight itself, the three gods,
-// then the two screens between days.
+// Thor's strike from the devlog post "Four days for one lightning strike", newest
+// of all: the whole event, then the impact frame, the ground, the burn up close.
+// Four tiles on purpose, so the two-column grid keeps closing without a hole.
+const STRIKE: GalleryItem[] = [
+	{
+		image: strikeBlowout,
+		animation: mjolnirsFallSequence,
+		name: "Mjölnir's Fall",
+		epithet: 'The whole strike, slowed down',
+		alt: "HoldStrong gameplay from the work-in-progress build, November 2026 — animation of Mjölnir's Fall: the battlefield around the tower goes dark, pale flashes cross the sky, a bolt runs in from the top right corner and strikes beside the tower, and the snow blows out almost to pure white.",
+	},
+	{
+		image: strikeBeforeImpact,
+		animation: mjolnirsFallImpact,
+		name: 'The impact frame',
+		epithet: 'The hit, frame by frame',
+		alt: "HoldStrong gameplay from the work-in-progress build, November 2026 — animation of the impact frame of Mjölnir's Fall: the dark battlefield with a ring of torches around the tower, then a bolt and a spark at the point of impact, then a picture gone almost white, before it flips into hard black and white.",
+	},
+	{
+		image: strikeBurnFigure,
+		animation: mjolnirsFallGround,
+		name: 'The strike',
+		epithet: 'A burn figure in the snow',
+		alt: "HoldStrong gameplay from the work-in-progress build, November 2026 — animation of the strike of Mjölnir's Fall: the snow around the tower blown out white, a bolt running in from the top right corner, and a branching burn figure standing out in the snow at the point of impact.",
+	},
+	{
+		image: mjolnirsFallBurn,
+		name: 'The burn',
+		epithet: 'Up close, in the editor',
+		alt: 'The burn of Mjölnir’s Fall up close, in the gameplay scene in the Unity editor, November 2026 — the Viking in his horned helmet stands on a black scorch whose edges run out in rays, with a thin orange figure glowing under his feet and red sparks in the air.',
+	},
+].map((item) => ({ ...item, flag: 'wip' as const, flagLabel: WIP_NOV_2026, position: 'center' }));
+
+// The October screenshots: the fight itself, the three gods, then the two screens
+// between days.
 const SCREENSHOTS: GalleryItem[] = [
 	{
 		image: gameplay,
@@ -107,7 +150,21 @@ const CONCEPT_ART: GalleryItem[] = [
 	},
 ].map((item) => ({ ...item, flag: 'concept' as const, flagLabel: 'Concept art', position: 'center 30%' }));
 
-const GALLERY: GalleryItem[] = [...SCREENSHOTS, ...CONCEPT_ART];
+const GALLERY: GalleryItem[] = [...STRIKE, ...SCREENSHOTS, ...CONCEPT_ART];
+
+const GALLERY_SIZES = '(max-width: 1023px) 92vw, 500px';
+
+// <Image> has no slot for a media-gated <source>, so the animated srcset is built
+// here. It stops at 1200px: every extra width re-encodes all frames, and a tile
+// is never wider than ~940 CSS px.
+const galleryTiles = await Promise.all(
+	GALLERY.map(async (item) => ({
+		...item,
+		animationSrcset: item.animation
+			? (await getImage({ src: item.animation, width: 1200, widths: [480, 800, 1200] })).srcSet.attribute
+			: undefined,
+	})),
+);
 ---
 
 <html lang="en">
@@ -160,6 +217,13 @@ const GALLERY: GalleryItem[] = [...SCREENSHOTS, ...CONCEPT_ART];
 						data-analytics-label="HoldStrong wordmark">Hold<span class="accent">Strong</span></a
 					>
 					<nav class="hs-nav" aria-label="Sections">
+						<a
+							href="/blog/"
+							class="hs-nav-devlog"
+							data-analytics="cta"
+							data-analytics-id="devlog"
+							data-analytics-location="nav">Devlog</a
+						>
 						<a href="#gods" data-analytics="cta" data-analytics-id="jump_gods" data-analytics-location="nav"
 							>The Gods</a
 						>
@@ -288,34 +352,45 @@ const GALLERY: GalleryItem[] = [...SCREENSHOTS, ...CONCEPT_ART];
 						<h2 class="hs-h2">Gallery</h2>
 					</div>
 					<!--
-					  Every image is 16:9 and every tile 2:1. On the turnarounds the figures sit in a
-					  horizontal band, so the crop takes empty sky and floor; on the screenshots it
-					  takes a thin strip off the top and bottom edge. Below 640px this scroller
-					  becomes the carousel.
+					  Every image is about 16:9 and every tile 2:1. On the turnarounds the figures sit
+					  in a horizontal band, so the crop takes empty sky and floor; on the screenshots it
+					  takes a thin strip off the top and bottom edge. Below 640px this scroller becomes
+					  the carousel. Animated tiles fall back to the still under reduced motion.
 					-->
 					<div class="hs-gallery-body hs-gallery-scroll" id="hs-gallery-scroll">
 						{
-							GALLERY.map(({ image, name, epithet, alt, flag, flagLabel, position }) => (
-								<figure class="hs-gallery-slot">
-									<Image
-										src={image}
-										alt={alt}
-										width={1600}
-										widths={[480, 800, 1200, 1600]}
-										sizes="(max-width: 1023px) 92vw, 500px"
-										class="hs-gallery-img"
-										style={`object-position: ${position}`}
-										loading="lazy"
-									/>
-									<span class="hs-gallery-flag" data-flag={flag}>
-										{flagLabel}
-									</span>
-									<figcaption class="hs-gallery-caption">
-										<span class="hs-gallery-name">{name}</span>
-										<span class="hs-gallery-epithet">{epithet}</span>
-									</figcaption>
-								</figure>
-							))
+							galleryTiles.map(
+								({ image, animationSrcset, name, epithet, alt, flag, flagLabel, position }) => (
+									<figure class="hs-gallery-slot">
+										<picture>
+											{animationSrcset && (
+												<source
+													media="(prefers-reduced-motion: no-preference)"
+													srcset={animationSrcset}
+													sizes={GALLERY_SIZES}
+												/>
+											)}
+											<Image
+												src={image}
+												alt={alt}
+												width={1600}
+												widths={[480, 800, 1200, 1600]}
+												sizes={GALLERY_SIZES}
+												class="hs-gallery-img"
+												style={`object-position: ${position}`}
+												loading="lazy"
+											/>
+										</picture>
+										<span class="hs-gallery-flag" data-flag={flag}>
+											{flagLabel}
+										</span>
+										<figcaption class="hs-gallery-caption">
+											<span class="hs-gallery-name">{name}</span>
+											<span class="hs-gallery-epithet">{epithet}</span>
+										</figcaption>
+									</figure>
+								),
+							)
 						}
 					</div>
 					<!-- Carousel position indicator. Display only, never a control. -->
@@ -354,7 +429,8 @@ const GALLERY: GalleryItem[] = [...SCREENSHOTS, ...CONCEPT_ART];
 					<div class="hs-signup-success" id="hs-success" hidden>
 						<div class="hs-signup-success-title">You're on the playtest list.</div>
 						<p class="hs-signup-success-body">
-							We'll send your test access and the feedback brief to <span id="hs-success-email"></span> before 15 November.
+							We'll send your test access and the feedback brief to <span id="hs-success-email"></span> before 15
+							November.
 						</p>
 					</div>
 
@@ -528,6 +604,16 @@ const GALLERY: GalleryItem[] = [...SCREENSHOTS, ...CONCEPT_ART];
 	.hs-nav a {
 		color: #8b97ab;
 		white-space: nowrap;
+	}
+	/* Leaves the page instead of jumping within it, so it stands apart from the
+	   section links: framed, ice blue like the footer's Devlog link, extra distance. */
+	.hs-nav-devlog {
+		display: flex;
+		align-items: center;
+		margin-right: 32px;
+		padding: 9px 18px;
+		border: 1px solid rgba(127, 212, 255, 0.35);
+		color: #7fd4ff !important;
 	}
 	.hs-nav-cta {
 		display: flex;
@@ -1197,11 +1283,14 @@ const GALLERY: GalleryItem[] = [...SCREENSHOTS, ...CONCEPT_ART];
 			object-position: 78% 35%;
 		}
 
-		/* The four jump links wrapped into a ~200px tall stack on top of the key
-		   art. The page scrolls fine without them; the wishlist CTA is the one
-		   thing in the header worth keeping. */
-		.hs-nav a:not(.hs-nav-cta) {
+		/* The jump links wrapped into a ~200px tall stack on top of the key art.
+		   The page scrolls fine without them; the two links that go somewhere else
+		   are what is worth keeping in the header. */
+		.hs-nav a:not(.hs-nav-cta, .hs-nav-devlog) {
 			display: none;
+		}
+		.hs-nav-devlog {
+			margin-right: 0;
 		}
 
 		/* Four units at min-width 104px needed 458px and clipped minutes and
