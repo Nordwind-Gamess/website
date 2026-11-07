@@ -21,7 +21,7 @@ Zwei Stufen, beide `max-width`:
 | Query                        | Bedeutung                                                                                                        |
 | :--------------------------- | :--------------------------------------------------------------------------------------------------------------- |
 | `@media (max-width: 1023px)` | „nicht Desktop": fluide Gutter, Grids geben Spalten ab, Schriftgrößen bekommen `clamp()`, Touch-Targets auf 44px |
-| `@media (max-width: 639px)`  | „Handy": Karussells greifen, Countdown wird 2×2, Sprungmarken verschwinden, CTA bricht um                        |
+| `@media (max-width: 639px)`  | „Handy": Karussells greifen, Countdown wird 2×2, Sprungmarken verschwinden (Devlog-Button und Wishlist bleiben)  |
 
 Die Werte sind nicht frei gewählt: sie sind deckungsgleich mit `viewportBucket()` in
 [`src/lib/analytics/auto.ts`](../src/lib/analytics/auto.ts) (`< 640` = mobile, `< 1024` = tablet).
@@ -77,23 +77,35 @@ nicht erst an.
 
 ## Die Galerie auf /holdstrong/
 
-Sechs Gameplay-Screenshots aus `src/assets/gameplay/`, danach vier Gegner-Turnarounds aus
-`src/assets/concept/`, alle eingebunden über `<Image>` aus `astro:assets` — die Originale sind bis
-zu 2752px breit und würden sonst für eine 500px-Kachel komplett ausgeliefert.
+Vier Kacheln zu Thors Blitzeinschlag aus dem Devlog-Post, sechs Gameplay-Screenshots aus
+`src/assets/gameplay/`, danach vier Gegner-Turnarounds aus `src/assets/concept/`, alle eingebunden
+über `<Image>` aus `astro:assets` — die Originale sind bis zu 2752px breit und würden sonst für eine
+500px-Kachel komplett ausgeliefert. Die Kachelzahl bleibt gerade, sonst bleibt im zweispaltigen Grid
+ein Loch.
 
 Die Daten stehen als `GALLERY` im Frontmatter von `holdstrong.astro`. Jeder Eintrag trägt eine
 **Flagge** (`flag`/`flagLabel`), die als Badge oben links auf dem Bild steht: `Concept art` (blau)
-oder `Work in progress · October 2026` (bernstein). Ein Screenshot nennt immer den Monat, in dem er
+oder `Work in progress · <Monat>` (bernstein). Ein Screenshot nennt immer den Monat, in dem er
 entstanden ist — Builds ändern sich, und ein undatierter Screenshot liest sich später als Aussage
 über den aktuellen Stand. Neue Screenshots bekommen also ein neues Label, alte behalten ihres.
 
 Die Punkte unter dem Karussell werden aus `GALLERY` erzeugt, die Zahl passt also automatisch.
 
+**Animierte Kacheln** tragen zusätzlich `animation`: ein animiertes WebP, das als
+`<source media="(prefers-reduced-motion: no-preference)">` vor dem Still in `image` steht. Die
+Astro-Pipeline erhält die Animation beim Skalieren. Das Srcset endet bewusst bei 1200px, weil jede
+Breite alle Frames neu kodiert. Es gilt dieselbe Regel wie in den Posts
+([docs/blog.md](./blog.md)): schnelle Vollbild-Blitze halten pro Durchlauf mindestens 1,5 Sekunden
+auf einem ruhigen Frame. `mjolnirs-fall-sequence.webp` entstand per `sharp` aus den 14 Frames in
+`src/assets/one-lightning-strike/Full_Effect/` (1536×864, `quality: 68`, 1,5 s Halten am Anfang und
+Ende, kein Frame unter 400 ms). Die übrigen `mjolnirs-fall-*.webp` sind Kopien der Dateien aus
+`public/blog/one-lightning-strike/`, denn was unter `public/` liegt, läuft nicht durch die Pipeline.
+
 Ein Knoten trägt beide Rollen: `.hs-gallery-body` ist oberhalb 1024px ein zweispaltiges Grid,
 zwischen 640px und 1023px einspaltig (zwei Spalten würden eine ganze Spielszene in eine
 ~290px-Kachel quetschen) und unterhalb 640px derselbe Knoten als Flex-Scroller.
 
-**Die Kacheln sind 2:1, die Bilder 16:9** — auf allen Breiten gleich. Die Figuren stehen in einem
+**Die Kacheln sind 2:1, die Bilder etwa 16:9** — auf allen Breiten gleich. Die Figuren stehen in einem
 waagerechten Band in der Bildmitte, oben und unten ist Leerraum; `object-fit: cover` schneidet also
 genau den Leerraum weg und nicht die Kunst. Das gilt auf dem Handy genauso: die Figuren werden vom
 flacheren Zuschnitt nicht kleiner (bei `cover` bestimmt die Kachelbreite die Skalierung), es
