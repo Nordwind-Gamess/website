@@ -4,7 +4,7 @@ description: 'How Thor got a lightning strike from the sky: a timeline of light,
 date: 2026-11-06
 ---
 
-![Mjölnir's Fall in the work-in-progress build, late October 2026 — a white lightning bolt with a dark ink outline strikes the Viking beside the tower of Rimehold, the snow around him lit up bright, the rest of the battlefield dark under the storm](/blog/one-lightning-strike/hero.webp)
+![The moment Mjölnir's Fall lands in the work-in-progress build, November 2026 — seen from above, a white lightning bolt with a dark ink outline runs in from the top right corner and strikes beside the tower of Rimehold, the snow blown out almost to pure white, with colour fringing along the edges of the picture](/blog/one-lightning-strike/hero.webp)
 
 In the [post about the new pencil look](/blog/drawn-in-pencil/) I listed an "Unknown Gift" for Thor as one of the placeholders in the skill tree. That slot is filled now. Thor, the god of thunder, has a second ability called Mjölnir's Fall, named after his hammer. When you use it, a lightning bolt comes down out of the sky into the Einheri, the nameless Viking you play, and a shockwave runs out from him through every enemy close by.
 
@@ -34,19 +34,19 @@ To fit the game's look, the bolt has a white core, a blue glow and a black ink o
 
 The moment of the hit has to feel like a hit. Three things happen at once.
 
-![The impact frame of Mjölnir's Fall in the work-in-progress build, late October 2026 — on the left the battlefield flipped to a negative for a split second, on the right the same frame in pure black and white ink](/blog/one-lightning-strike/impact-frame.webp)
+<picture><source media="(prefers-reduced-motion: no-preference)" srcset="/blog/one-lightning-strike/impact-frame.webp" /><img src="/blog/one-lightning-strike/impact-frame-still.webp" width="1536" height="864" loading="lazy" alt="Animation of five screenshots of the impact frame of Mjölnir's Fall in the work-in-progress build, November 2026 — the dark battlefield with the ring of torches around the tower, a bolt in the top right corner, a spark at the point of impact, then the picture goes almost white with only thin outlines left, before it flips into hard black and white" /></picture>
 
 - **A hit stop.** For a tenth of a second the game runs at 2 % of its normal speed, so it almost stands still.
-- **An impact frame.** For that moment the picture flips to a negative and then to pure black and white ink. That is a technique from anime, where the hardest hits often get a single frame like this. It fits the drawn look of HoldStrong very well, and I had wanted to use it for a long time.
+- **An impact frame.** For that moment the brightness shoots up almost to white, and then the picture flips to a negative, in pure black and white. That is a technique from anime, where the hardest hits often get a single frame like this. It fits the drawn look of HoldStrong very well, and I had wanted to use it for a long time. The animation above shows it heavily slowed down in five screenshots, from the moment just before to the negative, so you can look at each picture. In the game it is all over in a split second.
 - **A camera kick.** The camera jumps up and in, the field of view punches in, and both spring back. On top of that comes a short burst of colour fringing at the edges of the picture.
 
 I build HoldStrong in Unity with its Universal Render Pipeline. For the camera shake I use Feel, a toolkit by More Mountains made for exactly this kind of "game feel" work.
 
 ## The ground
 
-A bolt that hits snow should leave something behind. The ground part is built in layers.
+A bolt that hits snow should leave something behind. The two screenshots below show how that begins: while the white light of the strike is still there, the burn figure starts to stand out in the snow beside the tower. The ground part is built in layers to get there.
 
-![The ground after Mjölnir's Fall in the work-in-progress build, late October 2026 — a crater in the snow around the Viking, a black scorch in its centre with a thin, branching glowing figure burnt into it, and a few sparks cooling to red](/blog/one-lightning-strike/ground.webp)
+<picture><source media="(prefers-reduced-motion: no-preference)" srcset="/blog/one-lightning-strike/ground.webp" /><img src="/blog/one-lightning-strike/ground-still.webp" width="1536" height="864" loading="lazy" alt="Animation of two screenshots of the strike of Mjölnir's Fall in the work-in-progress build, November 2026 — the snow around the tower blown out white, a bolt running in from the top right corner to beside the tower, and in the second picture a branching burn figure clearly standing out in the snow at the point of impact" /></picture>
 
 - **A crater.** The strike presses a crater into the snow. I could reuse the technique for that from the ballista on the tower, whose bolts have been leaving craters since 23 October.
 - **A snow burst.** The heavy version of the ballista's snow burst, scaled up and played at the Viking's feet.
@@ -77,9 +77,9 @@ Not everything I built stayed in. Two things went out again, both on 24 October.
 
 ## Four things the first version got wrong
 
-**A burn you could not see.** The camera hangs about 25 metres above the battlefield, and from there one metre is about 55 to 60 pixels on screen. My first burn figure had a radius of 0.9 metres and lines 3 centimetres wide. On screen that was one to two pixels. I had built a detailed figure that nobody could see. Now it has a radius of 1.5 metres and lines 7 centimetres wide, and its red glow is much weaker, because that was far too strong.
+**A burn you could not see.** The camera hangs about 25 metres above the battlefield, and from there one metre is about 55 to 60 pixels on screen. My first burn figure had a radius of 0.9 metres and lines 3 centimetres wide. On screen that was one to two pixels. I had built a detailed figure that nobody could see. Now it has a radius of 1.5 metres and lines 7 centimetres wide, and its red glow is much weaker, because that was far too strong. The picture shows the result up close, in the gameplay scene in the editor.
 
-![The burn figure in the work-in-progress build, late October 2026 — on the left the first version, a faint reddish smudge in the crater, on the right the final version, a clearly visible branching figure glowing orange in the centre](/blog/one-lightning-strike/burn-compare.webp)
+![The finished burn up close, in the gameplay scene in the Unity editor, November 2026 — the Viking in his horned helmet stands on a black scorch whose edges run out in rays, a thin orange figure glows under his feet, warm light falls on the ground around him and red sparks fly through the air](/blog/one-lightning-strike/burn-effect.webp)
 
 **A burn that flickered.** To keep the crater open, I pressed it into the snow again every 0.2 seconds. But the snow fills craters back in, and in between the floor grew back a few centimetres. The burn lay just above it, so it was covered and uncovered five times a second. Now the crater is pressed in every frame, right after the snow has filled in, and the burn lies a little higher.
 
@@ -97,8 +97,6 @@ To keep this honest, here is what is still a placeholder:
 
 - **The icon.** Mjölnir's Fall has no pencil icon yet. Until it has one, its slot shows its name.
 - **The numbers.** Damage, radius and cooldown are a first pass and have not been through balancing.
-
-<!-- CLIP: the full strike, 3-4 s, from the press of the key to the recovery. -->
 
 To sum it up: one lightning strike took four days, because it is not one thing but a dozen small ones that all have to follow the same clock. The thing I learned most clearly is that the clock should come from the sound. Since the thunder decides when the light comes, the strike no longer feels like an effect. It feels like weather.
 

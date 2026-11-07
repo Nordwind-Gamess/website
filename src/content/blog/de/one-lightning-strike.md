@@ -4,7 +4,7 @@ description: 'Wie Thor einen Blitzschlag vom Himmel bekommen hat: ein Ablauf aus
 date: 2026-11-06
 ---
 
-![Mjölnirs Fall im Work-in-Progress-Build, Ende Oktober 2026 — ein weißer Blitz mit dunkler Tusche-Outline schlägt neben dem Turm von Rimehold in den Wikinger ein, der Schnee um ihn hell erleuchtet, der Rest des Schlachtfelds dunkel unter dem Sturm](/blog/one-lightning-strike/hero.webp)
+![Der Moment, in dem Mjölnirs Fall einschlägt, im Work-in-Progress-Build, November 2026 — von oben gesehen läuft ein weißer Blitz mit dunkler Tusche-Outline aus der rechten oberen Ecke und schlägt neben dem Turm von Rimehold ein, der Schnee ist fast bis ins reine Weiß überstrahlt, und an den Bildrändern liegen Farbsäume](/blog/one-lightning-strike/hero.webp)
 
 Im [Post über den neuen Bleistift-Look](/de/blog/drawn-in-pencil/) stand bei den Platzhaltern im Skill-Tree ein „Unbekanntes Geschenk“ für Thor. Dieser Platz ist jetzt besetzt. Thor, der Gott des Donners, hat eine zweite Fähigkeit, die nach seinem Hammer heißt: Mjölnirs Fall. Wenn du sie einsetzt, fährt ein Blitz vom Himmel in den Einheri, den namenlosen Wikinger, den du spielst, und eine Schockwelle läuft von ihm aus durch alle Gegner in der Nähe.
 
@@ -34,19 +34,19 @@ Damit er zum Look des Spiels passt, hat der Blitz einen weißen Kern, ein blaues
 
 Der Moment des Einschlags muss sich wie ein Schlag anfühlen. Dafür passieren drei Dinge gleichzeitig.
 
-![Das Impact-Frame von Mjölnirs Fall im Work-in-Progress-Build, Ende Oktober 2026 — links das Schlachtfeld für einen Sekundenbruchteil ins Negativ gekippt, rechts dasselbe Bild in reinem Schwarz-Weiß wie mit Tusche gezeichnet](/blog/one-lightning-strike/impact-frame.webp)
+<picture><source media="(prefers-reduced-motion: no-preference)" srcset="/blog/one-lightning-strike/impact-frame.webp" /><img src="/blog/one-lightning-strike/impact-frame-still.webp" width="1536" height="864" loading="lazy" alt="Animation aus fünf Screenshots des Impact-Frames von Mjölnirs Fall im Work-in-Progress-Build, November 2026 — das dunkle Schlachtfeld mit dem Fackelring um den Turm, ein Blitz in der rechten oberen Ecke, ein Funke am Einschlagspunkt, dann ist das Bild fast weiß und zeigt nur noch dünne Umrisse, bevor es in hartes Schwarz-Weiß kippt" /></picture>
 
 - **Ein Hit Stop.** Für eine Zehntelsekunde läuft das Spiel mit 2 % seiner normalen Geschwindigkeit, steht also fast still.
-- **Ein Impact-Frame.** In diesem Moment kippt das Bild ins Negativ und dann in reines Schwarz-Weiß. Die Technik kommt aus dem Anime, wo die härtesten Treffer oft ein einzelnes solches Bild bekommen. Sie passt sehr gut zum gezeichneten Look von HoldStrong, und ich wollte sie schon lange einmal einsetzen.
+- **Ein Impact-Frame.** In diesem Moment schießt die Helligkeit fast bis ins Weiß, und dann kippt das Bild ins Negativ, in reines Schwarz-Weiß. Die Technik kommt aus dem Anime, wo die härtesten Treffer oft ein einzelnes solches Bild bekommen. Sie passt sehr gut zum gezeichneten Look von HoldStrong, und ich wollte sie schon lange einmal einsetzen. Die Animation oben zeigt das stark verlangsamt in fünf Screenshots, vom Moment kurz davor bis zum Negativ, damit man sich die einzelnen Bilder ansehen kann. Im Spiel ist das alles in einem Sekundenbruchteil vorbei.
 - **Ein Kamera-Kick.** Die Kamera springt hoch und heran, das Sichtfeld zieht sich zusammen, und beides federt zurück. Dazu kommt ein kurzer Ausbruch von Farbsäumen an den Bildrändern.
 
 Ich baue HoldStrong in Unity mit der Universal Render Pipeline. Für das Kamerawackeln nutze ich Feel, ein Toolkit von More Mountains, das genau für diese Art von „Game Feel“-Arbeit gemacht ist.
 
 ## Der Boden
 
-Ein Blitz, der in Schnee einschlägt, sollte etwas hinterlassen. Der Boden ist deshalb in Schichten aufgebaut.
+Ein Blitz, der in Schnee einschlägt, sollte etwas hinterlassen. Die beiden Screenshots unten zeigen, wie das anfängt: Noch im weißen Licht des Einschlags zeichnet sich neben dem Turm die Brandfigur im Schnee ab. Der Boden ist dafür in Schichten aufgebaut.
 
-![Der Boden nach Mjölnirs Fall im Work-in-Progress-Build, Ende Oktober 2026 — ein Krater im Schnee um den Wikinger, in seiner Mitte ein schwarzer Brandfleck mit einer dünnen, verästelten, glühenden Figur und ein paar Funken, die zu Rot abkühlen](/blog/one-lightning-strike/ground.webp)
+<picture><source media="(prefers-reduced-motion: no-preference)" srcset="/blog/one-lightning-strike/ground.webp" /><img src="/blog/one-lightning-strike/ground-still.webp" width="1536" height="864" loading="lazy" alt="Animation aus zwei Screenshots des Einschlags von Mjölnirs Fall im Work-in-Progress-Build, November 2026 — der Schnee um den Turm ist weiß überstrahlt, ein Blitz läuft aus der rechten oberen Ecke bis neben den Turm, und am Einschlagspunkt zeichnet sich im zweiten Bild eine verästelte Brandfigur deutlich im Schnee ab" /></picture>
 
 - **Ein Krater.** Der Einschlag drückt einen Krater in den Schnee. Die Technik dafür konnte ich von der Ballista auf dem Turm übernehmen, deren Bolzen seit dem 23. Oktober Krater hinterlassen.
 - **Eine Schneefontäne.** Die schwere Version der Schneefontäne der Ballista, größer skaliert, zu Füßen des Wikingers.
@@ -77,9 +77,9 @@ Nicht alles, was ich gebaut habe, ist geblieben. Zwei Dinge sind wieder rausgefl
 
 ## Vier Dinge, die die erste Version falsch gemacht hat
 
-**Eine Brandfigur, die man nicht sehen konnte.** Die Kamera hängt etwa 25 Meter über dem Schlachtfeld, und von dort ist ein Meter auf dem Bildschirm etwa 55 bis 60 Pixel groß. Meine erste Brandfigur hatte einen Radius von 0,9 Metern und 3 Zentimeter breite Linien. Auf dem Bildschirm waren das ein bis zwei Pixel. Ich hatte also eine detaillierte Figur gebaut, die niemand sehen konnte. Jetzt hat sie einen Radius von 1,5 Metern und 7 Zentimeter breite Linien, und ihr rotes Glühen ist viel schwächer, denn das war viel zu stark.
+**Eine Brandfigur, die man nicht sehen konnte.** Die Kamera hängt etwa 25 Meter über dem Schlachtfeld, und von dort ist ein Meter auf dem Bildschirm etwa 55 bis 60 Pixel groß. Meine erste Brandfigur hatte einen Radius von 0,9 Metern und 3 Zentimeter breite Linien. Auf dem Bildschirm waren das ein bis zwei Pixel. Ich hatte also eine detaillierte Figur gebaut, die niemand sehen konnte. Jetzt hat sie einen Radius von 1,5 Metern und 7 Zentimeter breite Linien, und ihr rotes Glühen ist viel schwächer, denn das war viel zu stark. Das Bild zeigt das Ergebnis aus der Nähe, in der Gameplay-Szene im Editor.
 
-![Die Brandfigur im Work-in-Progress-Build, Ende Oktober 2026 — links die erste Version, ein blasser rötlicher Fleck im Krater, rechts die fertige Version, eine deutlich sichtbare, verästelte Figur, die in der Mitte orange glüht](/blog/one-lightning-strike/burn-compare.webp)
+![Der fertige Brandfleck aus der Nähe, in der Gameplay-Szene im Unity-Editor, November 2026 — der Wikinger mit Hörnerhelm steht auf einem schwarzen Fleck mit strahlenförmig auslaufenden Rändern, unter seinen Füßen glüht eine dünne orangefarbene Figur, warmes Licht fällt auf den Boden um ihn, und rote Funken fliegen durch die Luft](/blog/one-lightning-strike/burn-effect.webp)
 
 **Eine Brandfigur, die flackerte.** Damit der Krater offen bleibt, habe ich ihn alle 0,2 Sekunden neu in den Schnee gedrückt. Der Schnee füllt Krater aber wieder auf, und dazwischen wuchs der Boden ein paar Zentimeter nach. Die Brandfigur lag knapp darüber, also wurde sie fünfmal pro Sekunde zugedeckt und wieder freigelegt. Jetzt wird der Krater in jedem Frame neu eingedrückt, direkt nachdem der Schnee aufgefüllt hat, und die Brandfigur liegt etwas höher.
 
@@ -97,8 +97,6 @@ Damit das hier ehrlich bleibt, das ist noch Platzhalter:
 
 - **Das Icon.** Mjölnirs Fall hat noch kein Bleistift-Icon. Bis dahin steht im Slot sein Name.
 - **Die Zahlen.** Schaden, Radius und Cooldown sind ein erster Wurf und sind noch nicht durch das Balancing gegangen.
-
-<!-- CLIP: der komplette Blitzschlag, 3-4 s, vom Tastendruck bis zur Erholung. -->
 
 Zusammenfassend: Ein Blitz hat vier Tage gedauert, weil er nicht eine Sache ist, sondern ein Dutzend kleiner Sachen, die alle derselben Uhr folgen müssen. Am deutlichsten habe ich dabei gelernt, dass diese Uhr vom Ton kommen sollte. Seit der Donner entscheidet, wann das Licht kommt, fühlt sich der Blitz nicht mehr wie ein Effekt an. Er fühlt sich an wie Wetter.
 
