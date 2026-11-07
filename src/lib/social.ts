@@ -64,4 +64,11 @@ export const SOCIAL_CHANNELS: SocialChannel[] = [
 		size: 19,
 		icon: '<path d="M16.6 2h-2.9v12.1a2.4 2.4 0 1 1-2.4-2.4c.26 0 .5.04.74.12V9.1a5.1 5.1 0 1 0 4.36 5.05V8.2a6.1 6.1 0 0 0 3.6 1.16V6.6a3.6 3.6 0 0 1-3.4-3.5V2z" fill="currentColor"></path>',
 	},
+	{
+		id: 'instagram',
+		label: 'Instagram',
+		url: 'https://www.instagram.com/nordwindgames/',
+		size: 19,
+		icon: '<rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"></rect><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"></circle><circle cx="17.3" cy="6.7" r="1.3" fill="currentColor"></circle>',
+	},
 ];
