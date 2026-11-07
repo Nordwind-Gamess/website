@@ -94,7 +94,7 @@ New looks rarely arrive alone, and these three were waiting for me.
 So that this post does not promise more than it shows, here is what is still provisional as of today:
 
 - **The mouse icons in the sky.** The hints for "drag to pan" and "scroll to zoom" use two quick pencil-style icons until hand-drawn ones replace them.
-- **The "Unknown Gift".** Thor and Týr each have an empty slot in the tree for a gift that does not exist yet.
+- **The "Unknown Gift".** Thor and Týr each have an empty slot in the tree for a gift that does not exist yet. Update: Thor's slot has since been filled by [Mjölnir's Fall, his lightning strike](/blog/one-lightning-strike/).
 - **Icons for the stars.** At the moment most stars only show a rune. That looks good, but you have to open a star to know what it does. So the stars in the sky will very likely get small icons as well, to make the tree easier to read at a glance.
 - **The values.** Colours, sizes and spacing are a first pass, and some of them will change once more people have played with them.
 

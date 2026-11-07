@@ -156,6 +156,12 @@ prefix; link targets and routes actually exist; no self-links; DE/EN pairing. Al
 links per slug and the corpus word/H2 distribution.
 
 **images** — path shape, existence, case-exactness, alt text, and a readable `viewBox` on every SVG.
+The gate reads markdown images only, so check the paths of a raw `<picture>` by hand.
+
+An animated image in a post is an animated WebP in a raw `<picture>`: the animation in a
+`<source media="(prefers-reduced-motion: no-preference)">`, a still in the `<img>`. Rapid full-screen
+flashes hold on a calm frame for at least 1.5 seconds per loop. The hero stays a markdown image, a
+still: `heroOf()` reads it for the structured data, and animated files make poor sharing images.
 
 **backlog** — required fields, id format, statuses inside the machine, axes as integers 1–5, and
 that a `drafted` or `published` item's slug really has files in both locales. Self-skips when
