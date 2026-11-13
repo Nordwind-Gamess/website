@@ -21,7 +21,7 @@ Zwei Stufen, beide `max-width`:
 | Query                        | Bedeutung                                                                                                        |
 | :--------------------------- | :--------------------------------------------------------------------------------------------------------------- |
 | `@media (max-width: 1023px)` | „nicht Desktop": fluide Gutter, Grids geben Spalten ab, Schriftgrößen bekommen `clamp()`, Touch-Targets auf 44px |
-| `@media (max-width: 639px)`  | „Handy": Karussells greifen, Countdown wird 2×2, Sprungmarken verschwinden (Devlog-Button und Wishlist bleiben)  |
+| `@media (max-width: 639px)`  | „Handy": Karussells greifen, Sprungmarken verschwinden (Devlog-Button und Wishlist bleiben)                     |
 
 Die Werte sind nicht frei gewählt: sie sind deckungsgleich mit `viewportBucket()` in
 [`src/lib/analytics/auto.ts`](../src/lib/analytics/auto.ts) (`< 640` = mobile, `< 1024` = tablet).
@@ -45,7 +45,7 @@ Zahlen, die kleiner werden sollen.
 
 Die Palette folgt dem Keyart. Das ist eine eisblaue Nachtszene, deren einzige warme Stelle das
 Runenleuchten am Turm ist. Die Seite hat deshalb genau eine warme Akzentfamilie, nämlich
-Bernstein: `#f2a33a` (Akzent, Fokusrand, Glows), `#ffbb5c` (Thor, Countdown, WIP-Flagge),
+Bernstein: `#f2a33a` (Akzent, Fokusrand, Glows), `#ffbb5c` (Thor, WIP-Flagge),
 `#ffcf85` (heller Akzenttext) und den CTA-Verlauf `#f9b24e → #d4831c`. Daneben stehen Eisblau
 `#7fd4ff`, Violett `#a271ff`/`#c3a6ff` als Blitzfarbe und Blauschwarz `#070a11` als Grund. Das
 Fehlerrot `#ff7a6b` gehört bewusst nicht zur Bernsteinfamilie. Wechselt das Keyart, wird diese

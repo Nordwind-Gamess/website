@@ -19,6 +19,8 @@ import mjolnirsFallImpact from '../assets/gameplay/mjolnirs-fall-impact.webp';
 import mjolnirsFallSequence from '../assets/gameplay/mjolnirs-fall-sequence.webp';
 import rewardSelection from '../assets/gameplay/rewardSelection.png';
 import skillTree from '../assets/gameplay/skillTree.png';
+import prototypeGameplay from '../assets/prototype/tactics-gameplay.png';
+import prototypeTeam from '../assets/prototype/tactics-team.png';
 import strikeBeforeImpact from '../assets/one-lightning-strike/Full_Effect/07Lightning_incoming.png';
 import strikeBlowout from '../assets/one-lightning-strike/Full_Effect/11Lightning_Distortion.png';
 import strikeBurnFigure from '../assets/one-lightning-strike/Full_Effect/12Lightning_Impact.png';
@@ -44,9 +46,29 @@ type GalleryItem = {
 
 const WIP_OCT_2026 = 'Work in progress · October 2026';
 const WIP_NOV_2026 = 'Work in progress · November 2026';
+const PROTOTYPE_NOV_2026 = 'Prototype · November 2026';
 
-// Thor's strike from the devlog post "Four days for one lightning strike", newest
-// of all: the whole event, then the impact frame, the ground, the burn up close.
+// The first prototype of the new, turn-based direction from the devlog post
+// "A new direction for HoldStrong", newest of all. Grey boxes on purpose: it is
+// there to test the game, not the look, so its flag says prototype, not build.
+// Two tiles, so the two-column grid keeps closing without a hole.
+const PROTOTYPE: GalleryItem[] = [
+	{
+		image: prototypeGameplay,
+		name: 'A new direction',
+		epithet: 'The first prototype',
+		alt: 'The first prototype of the new direction for HoldStrong, November 2026 — an isometric grey-box map with blocky buildings, water and paths, the banner "Your Turn" at the top, three heroes with their HP, AP and MP on the left, an orange movement range on the map and one hero’s stats and skills along the bottom.',
+	},
+	{
+		image: prototypeTeam,
+		name: 'Your heroes',
+		epithet: 'Choose the starting weapons',
+		alt: 'The hero screen of the first prototype of the new direction for HoldStrong, November 2026 — three hero cards for Brida, Elsbeth and Roderick, each with a portrait, two traits, their stats and a row of six weapons to choose from.',
+	},
+].map((item) => ({ ...item, flag: 'wip' as const, flagLabel: PROTOTYPE_NOV_2026, position: 'center' }));
+
+// Thor's strike from the devlog post "Four days for one lightning strike": the
+// whole event, then the impact frame, the ground, the burn up close.
 // Four tiles on purpose, so the two-column grid keeps closing without a hole.
 const STRIKE: GalleryItem[] = [
 	{
@@ -150,7 +172,7 @@ const CONCEPT_ART: GalleryItem[] = [
 	},
 ].map((item) => ({ ...item, flag: 'concept' as const, flagLabel: 'Concept art', position: 'center 30%' }));
 
-const GALLERY: GalleryItem[] = [...STRIKE, ...SCREENSHOTS, ...CONCEPT_ART];
+const GALLERY: GalleryItem[] = [...PROTOTYPE, ...STRIKE, ...SCREENSHOTS, ...CONCEPT_ART];
 
 const GALLERY_SIZES = '(max-width: 1023px) 92vw, 500px';
 
@@ -252,8 +274,8 @@ const galleryTiles = await Promise.all(
 				<div class="hs-hero-body">
 					<h1 class="hs-title">HoldStrong</h1>
 					<p class="hs-tagline">
-						An incremental Viking roguelike. You are an Einheri, sent back at every dawn to hold Rimehold —
-						the last outpost before the Eternal Ice. The gods do not speak. They intervene.
+						You are an Einheri, sent back at every dawn to hold Rimehold — the last outpost before the
+						Eternal Ice. The gods do not speak. They intervene.
 					</p>
 
 					<div class="hs-cta-row">
@@ -272,37 +294,9 @@ const galleryTiles = await Promise.all(
 					<div class="hs-tags">
 						<span class="hs-tag">PC · Steam</span>
 						<span class="hs-tag">Single player</span>
-						<span class="hs-tag">Roguelike · Incremental</span>
 					</div>
 				</div>
 			</div>
-
-			<section class="hs-countdown" data-analytics-section="countdown">
-				<div class="hs-countdown-inner">
-					<div>
-						<div class="hs-eyebrow hs-eyebrow-blue">The demo opens the gates in</div>
-						<div class="hs-countdown-date">15 November 2026 · free</div>
-					</div>
-					<div class="hs-countdown-units">
-						<div class="hs-countdown-unit">
-							<div class="hs-countdown-value" id="hs-days">0</div>
-							<div class="hs-countdown-label">Days</div>
-						</div>
-						<div class="hs-countdown-unit">
-							<div class="hs-countdown-value" id="hs-hours">00</div>
-							<div class="hs-countdown-label">Hours</div>
-						</div>
-						<div class="hs-countdown-unit">
-							<div class="hs-countdown-value" id="hs-minutes">00</div>
-							<div class="hs-countdown-label">Minutes</div>
-						</div>
-						<div class="hs-countdown-unit">
-							<div class="hs-countdown-value" id="hs-seconds">00</div>
-							<div class="hs-countdown-label">Seconds</div>
-						</div>
-					</div>
-				</div>
-			</section>
 
 			<section id="gods" class="hs-section" data-analytics-section="gods">
 				<div class="hs-eyebrow hs-eyebrow-purple">Three orbs, one day of the endless battle</div>
@@ -405,14 +399,14 @@ const galleryTiles = await Promise.all(
 				<div class="hs-demo-inner">
 					<h2 class="hs-h2">Join the Playtest</h2>
 					<p class="hs-lead hs-lead-centered">
-						Play HoldStrong before the demo goes public on 15 November — and shape it. We hand out keys to a
-						small group, read every report, and change the build from what you tell us.
+						Play HoldStrong early and shape it. A playtest is coming soon: we hand out access to a small
+						group, read every report, and change the build from what you tell us.
 					</p>
 
 					<div class="hs-feature-grid">
 						<div class="hs-feature-card">
 							<div class="hs-feature-title" style="color:#7fd4ff">Early access</div>
-							<p class="hs-feature-body">Access to the test build, weeks ahead of the public demo.</p>
+							<p class="hs-feature-body">Access to the test build, long before anything goes public.</p>
 						</div>
 						<div class="hs-feature-card">
 							<div class="hs-feature-title" style="color:#ffbb5c">Direct line to us</div>
@@ -429,8 +423,8 @@ const galleryTiles = await Promise.all(
 					<div class="hs-signup-success" id="hs-success" hidden>
 						<div class="hs-signup-success-title">You're on the playtest list.</div>
 						<p class="hs-signup-success-body">
-							We'll send your test access and the feedback brief to <span id="hs-success-email"></span> before 15
-							November.
+							We'll send your test access and the feedback brief to <span id="hs-success-email"></span> as soon as
+							the playtest opens.
 						</p>
 					</div>
 
@@ -499,10 +493,6 @@ const galleryTiles = await Promise.all(
 			import { initHoldStrong } from '../scripts/holdstrong';
 
 			initHoldStrong({
-				days: document.getElementById('hs-days')!,
-				hours: document.getElementById('hs-hours')!,
-				minutes: document.getElementById('hs-minutes')!,
-				seconds: document.getElementById('hs-seconds')!,
 				form: document.getElementById('hs-signup-form') as HTMLFormElement,
 				emailInput: document.getElementById('hs-email-input') as HTMLInputElement,
 				error: document.getElementById('hs-error')!,
@@ -715,55 +705,6 @@ const galleryTiles = await Promise.all(
 	.hs-tag {
 		padding: 7px 14px;
 		border: 1px solid rgba(123, 134, 153, 0.28);
-	}
-
-	/* countdown */
-
-	.hs-countdown {
-		border-top: 1px solid rgba(127, 212, 255, 0.12);
-		border-bottom: 1px solid rgba(127, 212, 255, 0.12);
-		background: linear-gradient(180deg, #0a101c, #070a11);
-	}
-	.hs-countdown-inner {
-		max-width: 1120px;
-		margin: 0 auto;
-		padding: 44px 48px;
-		display: flex;
-		flex-wrap: wrap;
-		align-items: center;
-		justify-content: space-between;
-		gap: 32px;
-	}
-	.hs-countdown-date {
-		font-family: 'Metamorphous', serif;
-		font-size: 22px;
-		color: #e8dfd0;
-		margin-top: 6px;
-	}
-	.hs-countdown-units {
-		display: flex;
-		gap: 14px;
-	}
-	.hs-countdown-unit {
-		min-width: 104px;
-		padding: 16px 10px;
-		text-align: center;
-		background: rgba(15, 22, 36, 0.9);
-		border: 1px solid rgba(242, 163, 58, 0.22);
-	}
-	.hs-countdown-value {
-		font-family: 'Metamorphous', serif;
-		font-size: 44px;
-		line-height: 1;
-		color: #ffbb5c;
-	}
-	.hs-countdown-label {
-		margin-top: 8px;
-		font-family: 'Barlow Condensed', sans-serif;
-		font-size: 12px;
-		letter-spacing: 0.24em;
-		text-transform: uppercase;
-		color: #78849a;
 	}
 
 	/* shared section bits */
@@ -1171,7 +1112,6 @@ const galleryTiles = await Promise.all(
 	@media (max-width: 1023px) {
 		/* 48px of fixed gutter ate 27% of a 360px viewport. */
 		.hs-header,
-		.hs-countdown-inner,
 		.hs-section,
 		.hs-demo-inner,
 		.hs-footer-inner {
@@ -1215,12 +1155,6 @@ const galleryTiles = await Promise.all(
 		.hs-god-rune {
 			font-size: clamp(96px, 16vw, 150px);
 		}
-		.hs-countdown-value {
-			font-size: clamp(32px, 5.5vw, 44px);
-		}
-		.hs-countdown-date {
-			font-size: clamp(18px, 2.6vw, 22px);
-		}
 		.hs-feature-title {
 			font-size: clamp(19px, 2.6vw, 22px);
 		}
@@ -1244,9 +1178,6 @@ const galleryTiles = await Promise.all(
 			grid-template-columns: 1fr;
 		}
 
-		.hs-countdown-unit {
-			min-width: 0;
-		}
 		.hs-input {
 			min-width: 0;
 			width: 100%;
@@ -1291,18 +1222,6 @@ const galleryTiles = await Promise.all(
 		}
 		.hs-nav-devlog {
 			margin-right: 0;
-		}
-
-		/* Four units at min-width 104px needed 458px and clipped minutes and
-		   seconds away behind the old overflow:hidden. */
-		.hs-countdown-units {
-			display: grid;
-			grid-template-columns: 1fr 1fr;
-			gap: 12px;
-			width: 100%;
-		}
-		.hs-countdown-inner {
-			gap: 24px;
 		}
 
 		/* Gods carousel: framed cards with the next one peeking in. The peek is

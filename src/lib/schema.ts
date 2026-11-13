@@ -5,9 +5,9 @@
  * This is the part of the SEO work aimed at assistants rather than at ranking.
  * A BlogPosting with datePublished, author and inLanguage is what lets an
  * assistant write "according to the Nordwind Games devlog from August 2026…";
- * a VideoGame with genre and gamePlatform makes "which Viking roguelikes are in
- * development" a question that can be answered from markup instead of guessed
- * from prose.
+ * a VideoGame with gamePlatform and playMode makes "which Norse-mythology games
+ * are in development" a question that can be answered from markup instead of
+ * guessed from prose.
  *
  * Plain functions returning plain objects, with `site` passed in rather than
  * read from an Astro global, so the same nodes can be built from a page or from
@@ -106,14 +106,15 @@ export function videoGame(site: URL): Node {
 		url: absoluteUrl(HOLDSTRONG.path, site),
 		description: HOLDSTRONG.description,
 		image: absoluteUrl('/og/holdstrong.png', site),
-		genre: ['Roguelike', 'Tower defense', 'Incremental game'],
+		// No genre: the game design is being reworked (devlog "A new direction",
+		// November 2026) and the genre mix is not settled. Add it back once it is.
 		gamePlatform: 'PC',
 		playMode: 'SinglePlayer',
 		inLanguage: 'en',
 		author: { '@id': nodeId(site, ORGANIZATION) },
 		publisher: { '@id': nodeId(site, ORGANIZATION) },
-		// No datePublished: 15 November 2026 is when the demo opens, not a release
-		// date, and claiming otherwise would be wrong the moment it ships.
+		// No datePublished: there is no release date, and the demo has no date
+		// either since it was postponed indefinitely in November 2026.
 		//
 		// No offers: the Steam links on the page are still href="#". An offer
 		// pointing nowhere is worse than no offer.

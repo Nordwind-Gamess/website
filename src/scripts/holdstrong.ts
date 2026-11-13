@@ -1,4 +1,4 @@
-// Countdown to the public demo, and the playtest signup form.
+// The playtest signup form, the god cards and the gallery carousel.
 // Submissions are stored via a Google Apps Script web app that appends rows to
 // a Sheet — see scripts/google-apps-script/playtest-signup.gs for setup.
 //
@@ -12,10 +12,6 @@ import { track } from '../lib/analytics';
 type God = 'thor' | 'loki' | 'tyr';
 
 type Els = {
-	days: HTMLElement;
-	hours: HTMLElement;
-	minutes: HTMLElement;
-	seconds: HTMLElement;
 	form: HTMLFormElement;
 	emailInput: HTMLInputElement;
 	error: HTMLElement;
@@ -28,7 +24,6 @@ type Els = {
 
 type SignupResult = { ok: true } | { ok: false; reason: 'unreachable' | 'rejected' };
 
-const DEMO_TARGET = new Date('2026-11-15T10:00:00Z').getTime();
 const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]{2,}$/;
 const REQUEST_TIMEOUT_MS = 15_000;
 
@@ -72,23 +67,7 @@ const ERROR_MESSAGES = {
 	rejected: "The hall didn't answer. Please try again in a moment.",
 } as const;
 
-function pad(n: number) {
-	return String(n).padStart(2, '0');
-}
-
 const isGod = (value: string | undefined): value is God => GODS.includes(value as God);
-
-function startCountdown(els: Pick<Els, 'days' | 'hours' | 'minutes' | 'seconds'>) {
-	const tick = () => {
-		const remaining = Math.max(0, DEMO_TARGET - Date.now());
-		els.days.textContent = String(Math.floor(remaining / 86_400_000));
-		els.hours.textContent = pad(Math.floor(remaining / 3_600_000) % 24);
-		els.minutes.textContent = pad(Math.floor(remaining / 60_000) % 60);
-		els.seconds.textContent = pad(Math.floor(remaining / 1000) % 60);
-	};
-	tick();
-	setInterval(tick, 1000);
-}
 
 // The Apps Script web app answers with a 302 to script.googleusercontent.com,
 // and BOTH that redirect and the final response carry `Access-Control-Allow-Origin: *`.
@@ -310,7 +289,6 @@ function bindGalleryCarousel(scroll: HTMLElement | null, dots: HTMLElement | nul
 }
 
 export function initHoldStrong(els: Els) {
-	startCountdown(els);
 	bindSignupForm(els);
 	bindGodCards(els.godCards);
 	bindGalleryCarousel(els.galleryScroll, els.galleryDots);

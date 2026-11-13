@@ -128,7 +128,8 @@ Diese drei Lücken sind keine Nachlässigkeit, sondern warten auf eine Vorausset
   112×112. Nachtragen, sobald `public/logo-512.png` existiert.
 - **`offers` an `VideoGame`** — die Steam-Links auf `/holdstrong/` sind noch `href="#"`. Ein Angebot,
   das nirgendwohin zeigt, ist schlechter als keins.
-- **`VideoGame.datePublished`** — der 16.10.2026 ist der Demo-Start, nicht das Release.
+- **`VideoGame.datePublished`** — es gibt kein Release-Datum, und die Demo ist seit November 2026 ohne Termin verschoben.
+- **`VideoGame.genre`** — das Game Design wird seit November 2026 neu aufgesetzt (Devlog „A new direction"), der Genre-Mix steht noch nicht fest. Erst wieder eintragen, wenn er feststeht, und dann auch Tagline, Descriptions in `src/lib/seo.ts` und `llms.txt` nachziehen.
 
 ## Open Graph
 
@@ -165,8 +166,8 @@ also Duplicate Content, den man danach wieder einfangen müsste. Ab etwa zwanzig
 
 Markup macht die Seite maschinenlesbar; **zitiert** wird sie wegen der Textform. Für neue Posts:
 
-- **Fakten-Sätze statt Marketing.** „Der öffentliche Demo-Start ist der 15. November 2026, kostenlos
-  erhältlich" ist zitierbar. „Bald verfügbar" nicht. Datum, Zahl, Eigenname in _einem_ Satz.
+- **Fakten-Sätze statt Marketing.** „Die Demo von HoldStrong ist seit dem 13. November 2026 auf unbestimmte
+  Zeit verschoben" ist zitierbar. „Bald verfügbar" nicht. Datum, Zahl, Eigenname in _einem_ Satz.
 - **Definitionssatz oben.** Ein Retrieval-System sieht oft nur einen Chunk, also sollte der erste
   Satz ohne Kontext funktionieren („HoldStrong ist ein …").
 - **H2 als Frage.** „Warum kein Win-State?" wird als Passage zu einer Frage gematcht,
