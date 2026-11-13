@@ -16,7 +16,7 @@
  */
 import type { APIRoute } from 'astro';
 import { getPostsByLocale, postPath, type Locale } from '../lib/blog';
-import { DEMO_DATE, GAME_FULL_NAME, GAME_NAME, SITE_NAME, STATIC_PAGES, blogIndex } from '../lib/seo';
+import { GAME_FULL_NAME, GAME_NAME, SITE_NAME, STATIC_PAGES, blogIndex } from '../lib/seo';
 import { DISCORD_INVITE } from '../lib/social';
 
 const LOCALE_HEADINGS: Record<Locale, string> = {
@@ -34,17 +34,17 @@ export const GET: APIRoute = async ({ site }) => {
 	const sections: string[] = [
 		`# ${SITE_NAME}`,
 		'',
-		`> Indie game studio in northern Germany, building ${GAME_FULL_NAME} — an incremental`,
-		'> Viking roguelike tower defense for PC. Bilingual public devlog (English and German).',
+		`> Indie game studio in northern Germany, building ${GAME_FULL_NAME}, a game`,
+		'> set in Norse mythology, for PC. Bilingual public devlog (English and German).',
 		'',
 		'## Facts',
 		'',
 		`- Studio: ${SITE_NAME}, Germany. One developer, Mathias.`,
 		`- Game: ${GAME_FULL_NAME}, also written ${GAME_NAME}. It is the studio's first game.`,
-		'- Genre: incremental roguelike tower defense, single player.',
+		'- Single player. Since November 2026 the game design is being reworked, and the genre is not settled.',
 		'- Setting: Rimehold, the last outpost before the Eternal Ice. You play an Einheri sent back at every dawn.',
 		'- Platform: PC, via Steam.',
-		`- Public demo: ${DEMO_DATE}, free. Playtesters get access before that date.`,
+		'- Public demo: postponed indefinitely in November 2026. A playtest is planned and will be announced in the devlog.',
 		'- Not yet released. No launch date has been announced.',
 		`- Community: ${DISCORD_INVITE}`,
 		'',

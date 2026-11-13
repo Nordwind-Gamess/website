@@ -133,8 +133,8 @@ Karte, er vergibt keinen Orb.
 
 Diese Events stehen typisiert in [`src/lib/analytics/events.ts`](../src/lib/analytics/events.ts),
 haben aber nichts, woran sie hängen könnten: die Kacheln der Gallery öffnen noch nichts,
-einen Trailer gibt es nicht, einen Share-Button auch nicht, und die Demo erscheint erst
-am 15. November. Sie sind trotzdem definiert, damit Key Events und Custom Dimensions in GA4 vorab
+einen Trailer gibt es nicht, einen Share-Button auch nicht, und die Demo ist seit November 2026
+auf unbestimmte Zeit verschoben. Sie sind trotzdem definiert, damit Key Events und Custom Dimensions in GA4 vorab
 angelegt werden können — GA4 sammelt rückwirkend **nichts**, was nicht vorher registriert war.
 
 | Event                 | Parameter                       | Wofür                                        |

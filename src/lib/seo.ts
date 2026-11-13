@@ -21,9 +21,6 @@ export const SITE_NAME = 'Nordwind Games';
 export const GAME_NAME = 'HoldStrong';
 export const GAME_FULL_NAME = 'HoldStrong: The Last Tower';
 
-/** The public demo date, as shown on the game page and counted down to in src/scripts/holdstrong.ts. */
-export const DEMO_DATE = '2026-11-15';
-
 export type OgImage = { src: string; width: number; height: number; alt: string };
 
 /**
@@ -56,13 +53,13 @@ export type StaticPage = { path: string; title: string; description: string };
 export const HOME: StaticPage = {
 	path: '/',
 	title: 'Nordwind Games — indie game studio',
-	description: `${SITE_NAME} is an indie game studio in northern Germany, building ${GAME_FULL_NAME} — an incremental Viking roguelike tower defense for PC.`,
+	description: `${SITE_NAME} is an indie game studio in northern Germany, building ${GAME_FULL_NAME}, a game set in Norse mythology, for PC.`,
 };
 
 export const HOLDSTRONG: StaticPage = {
 	path: '/holdstrong/',
 	title: `${GAME_FULL_NAME} — ${SITE_NAME}`,
-	description: `${GAME_NAME} is an incremental Viking roguelike tower defense by ${SITE_NAME}. The free demo arrives on 15 November 2026; playtesters get access before that.`,
+	description: `${GAME_NAME} is a game set in Norse mythology by ${SITE_NAME}: you hold Rimehold, the last outpost before the Eternal Ice. Sign up for the upcoming playtest.`,
 };
 
 export const STATIC_PAGES: StaticPage[] = [HOME, HOLDSTRONG];
